@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta                                       charset="UTF-8">
+        <meta   http-equiv="Permissions-Policy"     content="interest-cohort=()">
+        <meta   name="viewport"                     content="width=device-width, initial-scale=1.0">
+        <meta   name="author"                       content="Plutonny">
+        <meta   name="description"                  content="Ошибка">
+        <meta   name="theme-color" id="theme-color" content="#202020">
+
+        <title  id="csc11-title-of-page"            >Ошибка :(</title>
+        <link   rel="manifest"                      href="/college-beta/manifest.json">
+
+        <link   rel="icon"                          href="/assets/beta/settings.png">
+        <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
+        
+        <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+
+        <noscript>
+            <style>
+                html, body { background-color: #202020; }
+                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
+                div        { margin-top: 64px; }
+            </style>
+            <div>
+                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
+                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
+            </div>
+        </noscript>
+    </head>
+    <body>
+
+        <script>
+            var URL = '';
+            try {
+                var URL = document.location.href.split('?')[1].split('=')[1]
+            } catch (e) {
+                logs('info', `No one argument in URL (${e})`)
+            }
+        </script>
+
+        <div class="modal" id="modal"></div>
+
+        <div id="error" style="margin-left: 16px; margin-right: 16px;">
+            <script>
+                if (URL == '') {
+                    output('error', `
+                        <h1 style="margin-bottom: 76px; margin-top: 76px; text-align: center;">Произошла критическая ошибка!</h1>
+                        <h3 style="text-align: center;">Что случилось?<br>Сайт говорит нам неведомые "${sessionStorage.getItem('errorPageError')}"</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">
+                            <button style="height: 36px; width: 196px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="history.back(); sessionStorage.removeItem('errorPageLog'); sessionStorage.removeItem('errorPageError')">Вернуться назад</button>
+                            <button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>
+                        </div>
+                        <h3 style="text-align: center; margin-top: 48px;">Если хотите помочь <a href="https://vk.me/pltny" target="_blank">разработчику</a> разобраться в этой проблеме быстрее,<br>нажмите на кнопку ниже и отправьте <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
+                            <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="allInfoErrorModal(sessionStorage.getItem('errorPageError'), sessionStorage.getItem('errorPageLog'))">Дополнительная информация</button>
+                        </div>
+                    `)
+                } else if (URL == 'gtable') {
+                    output('error', `
+                        <style>
+                            :root {
+                                --root-text-color      :#000000;
+                                --active-text-color    :#202020;
+                                --primary-bg-color     :#f4f4f4;
+                                --root-button-color    :#dddddd;
+                                --hover-button-color   :#d2d2d2;
+                                --active-button-color  :#c0c0c0;
+                                --week-color           :#55555555 !important;
+                            }
+                        </style>
+                        <h1 style="margin-bottom: 76px; margin-top: 76px; text-align: center;">Произошла ошибка!</h1>
+                        <h3 style="text-align: center;">Что случилось?<br>Кажется, вы попытались открыть страницу с таблицей, но что-то пошло не так...</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">
+                            <button style="height: 36px; width: 196px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="history.back(); sessionStorage.removeItem('errorPageLog'); sessionStorage.removeItem('errorPageError')">Вернуться назад</button>
+                            <button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>
+                        </div>
+                        <h3 style="text-align: center; margin-top: 48px;">Если вы попали сюда случайно, напишите <a href="https://vk.me/pltny" target="_blank">разработчику</a>, чтобы разобраться в этой проблеме. Советую нажать а кнопку ниже и скинуть <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
+                            <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="allInfoErrorModal(sessionStorage.getItem('errorPageError'), sessionStorage.getItem('errorPageLog'))">Дополнительная информация</button>
+                        </div>
+                    `)
+                }
+            </script>
+        </div>
+    </body>
+</html>
