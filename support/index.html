@@ -24,6 +24,10 @@
         <style  id="root-colors-theme"></style>
         
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
         <script type="text/javascript"              src="/assets/beta/storage.js"></script>
         <script type="text/javascript"              src="/assets/beta/timetable.js"></script>
 
@@ -45,11 +49,6 @@
             <script>header(`Поддержка`, false, true)</script>
         </div>
         <div class="content" id="content">Anyway пустая ахаха</div>
-
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
-        </script>
 
         <script>
             deviceStorage('write', 'supportBuildPage', thisPageBuild)

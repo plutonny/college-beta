@@ -23,6 +23,10 @@
         <style  id="root-colors-theme"></style>
         
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
         <script type="text/javascript"              src="/assets/beta/storage.js"></script>
 
         <noscript>
@@ -123,13 +127,6 @@
             }
 
             username.oninput = async function() { deviceStorage('write', 'username', username.value); usernamesave.innerHTML = 'сохранено'; await sleep(2500); usernamesave.innerHTML = '' }
-            
-            outBetaNotes()
-        </script>
-
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
         </script>
 
         <script>

@@ -15,6 +15,10 @@
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
 
         <noscript>
             <style>
@@ -83,10 +87,5 @@
                 }
             </script>
         </div>
-
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
-        </script>
     </body>
 </html>

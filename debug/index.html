@@ -21,6 +21,10 @@
         <style  id="root-colors-theme"></style>
         
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
         <script type="text/javascript"              src="/assets/beta/storage.js"></script>
 
         <noscript>
@@ -39,11 +43,6 @@
         <div class="header" id="header"></div>
         <div class="navbar" id="navbar"></div>
         <div class="debug" id="debug"></div>
-
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
-        </script>
 
         <script>
             header(`Debug`, false, true);

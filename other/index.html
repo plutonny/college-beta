@@ -24,6 +24,10 @@
         <style  id="root-colors-theme"></style>
 
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
         <script type="text/javascript"              src="/assets/beta/storage.js"></script>
         
         <noscript>
@@ -68,13 +72,7 @@
             `)
         </script>
 
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
         <script>
-            if (BETA) { eruda.init() }
-        </script>
-
-        <script>
-            outBetaNotes()
             deviceStorage('write', 'otherBuildPage', thisPageBuild)
         </script>
     </body>
