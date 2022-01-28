@@ -21,7 +21,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 67; </script>
+        <script> var thisPageBuild = 68; </script>
         
         <style  id="root-colors-theme"></style>
 
@@ -42,35 +42,93 @@
     </head>
     <body>
         <div class="modal" id="modal"></div>
-        <div class="header" id="header"><script>header(`Другое`, true, false)</script></div>
+        <div class="header" id="header"></div>
         <div class="navbar" id="navbar"><script>navbar('other')</script></div>
         <div class="content" id="content"></div>
         
         <script>
-            output('content', `
-                <style>
-                    .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
-                </style>
+            if (REQUEST.p == 'seating') {
+                header(`Рассадка`, false, true)
+                output('csc11-title-of-page', 'Рассадка, КСК-11')
+                output('content', `
+                    <style>
+                        .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 38px 8px 73px 8px; min-height: calc(100vh - 100px); }
+                        td.other_table { border: 1px solid var(--root-text-color); height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
+                        .other_table_num { width: 15px; border: 1px solid var(--root-text-color);  font-family: 'Montserrat'; }
+                    </style>
 
-                <div style="margin: 24px 0px 8px 0px; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center;">
-                    <img style="height: 64px; width: 64px; border-radius: 16px;" src="/college${betaRepos}/csc11-pwa-app-icon.png" />
-                    <h2 style="text-align: center;">Версия: ${storageVersion}</h2>
-                </div>
-                
-                <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/')">
-                    <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.list}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Список таблиц</p></div>
-                </button>
-                <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('https://discord.gg/vS5X5NdEKP')">
-                    <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.discord}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Дискорд</p></div>
-                </button>
-                <div style="height: 16px;"></div>
-                <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/support/')">
-                    <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.support}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Поддержка</p></div>
-                </button>
-                <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/settings/')">
-                    <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.settings}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Настройки</p></div>
-                </button>
-            `)
+                    <table style="text-align: center; border-collapse: collapse; margin: auto; background-color: var(--root-navbar-bg-color);">
+                        <tr class="other_table_num">
+                            <td class="other_table_num">№</td>
+                            <td class="other_table_num">1</td>
+                            <td class="other_table_num">2</td>
+                            <td class="other_table_num">3</td>
+                        </tr>
+                        <tr class="other_table">
+                            <td class="other_table">1</td>
+                            <td class="other_table">Никитин<br>Павозков</td>
+                            <td class="other_table">Ивин</td>
+                            <td class="other_table">Кузнецов<br>Савинов</td>
+                        </tr>
+                        <tr class="other_table">
+                            <td class="other_table">2</td>
+                            <td class="other_table">Никонов<br>Поликевич</td>
+                            <td class="other_table">Каралин<br>Адилов</td>
+                            <td class="other_table">Едемский<br>Михеева</td>
+                        </tr>
+                        <tr class="other_table">
+                            <td class="other_table">3</td>
+                            <td class="other_table">Ципилев</td>
+                            <td class="other_table">Сибирцев<br>Кубышкина</td>
+                            <td class="other_table">Печинкина<br>Петров</td>
+                        </tr>
+                        <tr class="other_table">
+                            <td class="other_table">4</td>
+                            <td class="other_table">Барзаногова</td>
+                            <td class="other_table">Дейнега<br>Некрасов</td>
+                            <td class="other_table">Алексеев<br>Клюкин</td>
+                        </tr>
+                        <tr class="other_table">
+                            <td class="other_table">5</td>
+                            <td class="other_table">Байбородин<br>Бойко</td>
+                            <td class="other_table">Чебыкин</td>
+                            <td class="other_table"></td>
+                        </tr>
+                    </table>
+                `)
+            }
+            else {
+                header(`Другое`, true, false)
+                output('content', `
+                    <style>
+                        .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+                    </style>
+
+                    <div style="margin: 24px 0px 8px 0px; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center;">
+                        <img style="height: 64px; width: 64px; border-radius: 16px;" src="/college${betaRepos}/csc11-pwa-app-icon.png" />
+                        <h2 style="text-align: center;">Версия: ${storageVersion}</h2>
+                    </div>
+                    
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/')">
+                        <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.list}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Список таблиц</p></div>
+                    </button>
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/other/?p=seating')">
+                        <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.people}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Рассадка</p></div>
+                    </button>
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('https://discord.gg/vS5X5NdEKP')">
+                        <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.discord}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Дискорд</p></div>
+                    </button>
+
+                    <div style="height: 16px;"></div>
+
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/support/')">
+                        <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.support}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Поддержка</p></div>
+                    </button>
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/settings/')">
+                        <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.settings}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Настройки</p></div>
+                    </button>
+                `)
+            }
         </script>
 
         <script>
