@@ -35,6 +35,11 @@
     </head>
     <body>
         <div class="header" id="header"></div>
+
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
         
         <script>
             localStorage.setItem('simpleBuildPage', thisPageBuild)

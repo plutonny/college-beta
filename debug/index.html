@@ -38,8 +38,12 @@
         <div class="modal" id="modal"></div>
         <div class="header" id="header"></div>
         <div class="navbar" id="navbar"></div>
-        <div id="beta"></div>
         <div class="debug" id="debug"></div>
+
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
 
         <script>
             header(`Debug`, false, true);

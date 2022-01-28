@@ -105,7 +105,6 @@
                     -->
                 </div>
             </div>
-            <div id="beta"></div>
             `)
 
             var themeCheckboxBox = document.getElementById('entheme');
@@ -127,6 +126,12 @@
             
             outBetaNotes()
         </script>
+
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
+        </script>
+
         <script>
             deviceStorage('write', 'settingsBuildPage', thisPageBuild)
         </script>

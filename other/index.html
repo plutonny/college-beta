@@ -65,8 +65,12 @@
                 <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/settings/')">
                     <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: #707070;">${SVG.settings}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Настройки</p></div>
                 </button>
-                <div id="beta"></div>
             `)
+        </script>
+
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
         </script>
 
         <script>

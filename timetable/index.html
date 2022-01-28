@@ -102,8 +102,12 @@
                     .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                 </style>
                 ${inj}
-                <div id="beta"></div>
             `)
+        </script>
+
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>
+            if (BETA) { eruda.init() }
         </script>
 
         <script>
