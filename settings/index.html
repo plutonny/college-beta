@@ -42,6 +42,7 @@
     <body>
         <div class="modal" id="modal"></div>
         <div class="header" id="header"><script>header(`Настройки`, true, true)</script></div>
+        <div class="navbar" id="navbar"><script>navbar('other')</script></div>
         <div class="settings" id="settings"></div>
 
         <script>
@@ -122,7 +123,7 @@
                     header(`Настройки`, true, true)
                 }
                 if (type == 2 || type == 3) {
-                    deviceStorage('write', 'themeEnableThemeButton', `false`); themeCheckboxBox.setAttribute('disabled', 'disabled'); themeCheckboxBox.removeAttribute('checked')
+                    deviceStorage('write', 'themeEnableThemeButton', `false`); themeCheckboxBox.removeAttribute('checked')
                     header(`Настройки`, false, true)
                 } 
                 theme('load') 
