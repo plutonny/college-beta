@@ -90,38 +90,40 @@
                 <p>Работа смены темы:</p>
                 <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                     <div style="display: flex; align-items: center;">
-                        <input type="radio" id="tytheme1" name="tytheme" ${deviceStorage('get', 'themeType') == 1 ? 'checked' : ''} onchange="tytheme(1)" style="margin: 0px 12px 0px 6px;" value="theme">
+                        <input type="radio" id="tytheme1" name="tytheme" ${deviceStorage('get', 'themeType') == 1 ? 'checked' : ''} onchange="settingsChangeType(1)" style="margin: 0px 12px 0px 6px;" value="theme">
                         <label for="tytheme1">по нажатию кнопки</label>
                     </div>
                     <div style="margin: 6px 0px 6px 16px; display: flex; align-items: center;">
-                        <input type="checkbox" id="entheme" name="entheme" ${deviceStorage('get', 'themeEnableThemeButton') == 'true' ? 'checked' : ''} ${deviceStorage('get', 'themeType') == 2 || deviceStorage('get', 'themeType') == 3 ? 'disabled="disabled"' : ''} onchange="entheme(${deviceStorage('get', 'themeEnableThemeButton')})" style="margin: 0px 12px 0px 6px;" value="theme">
+                        <input type="checkbox" id="entheme" name="entheme" ${deviceStorage('get', 'themeEnableThemeButton') == 'true' ? 'checked' : ''} ${deviceStorage('get', 'themeType') == 2 || deviceStorage('get', 'themeType') == 3 ? 'disabled="disabled"' : ''} onchange="settingsEnableThemeButton()" style="margin: 0px 12px 0px 6px;" value="theme">
                         <label for="entheme">включить кнопку смены темы</label>
                     </div>
                     <div style="display: flex; align-items: center;">
-                        <input type="radio" id="tytheme2" name="tytheme" ${deviceStorage('get', 'themeType') == 2 ? 'checked' : ''} onchange="tytheme(2)" style="margin: 0px 12px 0px 6px;" value="theme">
+                        <input type="radio" id="tytheme2" name="tytheme" ${deviceStorage('get', 'themeType') == 2 ? 'checked' : ''} onchange="settingsChangeType(2)" style="margin: 0px 12px 0px 6px;" value="theme">
                         <label for="tytheme2">по времени рассвета/заката</label>
-                    </div>
+                    </div>`+/*`
                     <!--
                     <div style="margin-top: 3px;">
-                        <input type="radio" id="tytheme3" name="tytheme" ${deviceStorage('get', 'themeType') == 3 ? 'checked' : ''} onchange="tytheme(3)" onclick="tytheme3('set')" style="margin-right: 12px;" value="theme">
+                        <input type="radio" id="tytheme3" name="tytheme" ${deviceStorage('get', 'themeType') == 3 ? 'checked' : ''} onchange="settingsChangeType(3)" onclick="tytheme3('set')" style="margin-right: 12px;" value="theme">
                         <label for="tytheme3">по времени: ${tytheme3('get')}</label>
                     </div>
-                    -->
+                    -->`+*/`
                 </div>
             </div>
             `)
 
             var themeCheckboxBox = document.getElementById('entheme');
-            function entheme(tof) { themeCheckboxBox.setAttribute('disabled', 'disabled'); deviceStorage('write', 'themeEnableThemeButton', `${!tof}`)}
+            function settingsEnableThemeButton() { deviceStorage('write', 'themeEnableThemeButton', deviceStorage('get', 'themeEnableThemeButton') == 'true' ? false : true); header('Настройки', deviceStorage('get', 'themeEnableThemeButton') == 'true', true)}
             
             /* 1 - theme button (or none); 2 - sunrise/sunset; 3 - custom time */
-            function tytheme(type) { 
+            function settingsChangeType(type) { 
                 deviceStorage('write', 'themeType', `${type}`)
                 if (type == 1) { 
-                    entheme(false); deviceStorage('write', 'themeEnableThemeButton', `true`); themeCheckboxBox.setAttribute('checked', 'checked')
+                    deviceStorage('write', 'themeEnableThemeButton', `true`); themeCheckboxBox.setAttribute('checked', 'checked')
+                    header(`Настройки`, true, true)
                 }
                 if (type == 2 || type == 3) {
                     deviceStorage('write', 'themeEnableThemeButton', `false`); themeCheckboxBox.setAttribute('disabled', 'disabled'); themeCheckboxBox.removeAttribute('checked')
+                    header(`Настройки`, false, true)
                 } 
                 theme('load') 
             }
