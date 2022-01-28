@@ -10,24 +10,22 @@
         <meta   name="theme-color" id="theme-color" content="#202020">
 
         <title  id="csc11-title-of-page"            >Расписание, КСК-11</title>
+
         <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
         <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
-        <link   rel="manifest"                      href="/college-beta/manifest.json">
         <script type="text/javascript"              src="/assets/solar.js"></script>
         <script type="text/javascript"              src="/assets/luxon.js"></script>
-
+        <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
+        
         <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
+        <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 60; </script>
+        <script> var thisPageBuild = 61; </script>
         
         <style  id="root-colors-theme"></style>
 
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
-        </script>
         <script type="text/javascript"              src="/assets/beta/storage.js"></script>
         <script type="text/javascript"              src="/assets/beta/timetable.js"></script>
 
@@ -51,14 +49,8 @@
         <div class="content" id="content"></div>
         
         <script>
-            var URL = '', inj = ''
-            try {
-                var URL = document.location.href.split('?')[1].split('=')[1]
-            } catch (e) {
-                logs('error', `Error: gtable page get URL (${e})`)
-            }
-
-            if (URL == 'week') {
+            var inj = ''
+            if (REQUEST.q == 'week') {
                 header(`Расписание на неделю`, false, true)
                 navbar('home')
                 output('greeting', `
@@ -81,7 +73,7 @@
                 </div>
                 `
                 timetableWeekDayChanger(CURRDATE.getDay())
-            } else if (URL == 'alerts') {
+            } else if (REQUEST.q == 'alerts') {
                 header(`Расписание звонков`, false, true)
                 navbar('home')
                 inj += `<div>
@@ -98,8 +90,6 @@
             } else {
                 logs('critical', 'Error: timetable page cant find current response')
             }
-            
-            
 
             output('content', `
                 <style>

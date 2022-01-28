@@ -10,24 +10,22 @@
         <meta   name="theme-color" id="theme-color" content="#202020">
 
         <title  id="csc11-title-of-page"            >Таблица, КСК-11</title>
+        
         <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
         <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
-        <link   rel="manifest"                      href="/college-beta/manifest.json">
         <script type="text/javascript"              src="/assets/solar.js"></script>
         <script type="text/javascript"              src="/assets/luxon.js"></script>
-
+        <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
+        
         <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
+        <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 8; </script>
+        <script> var thisPageBuild = 9; </script>
         
         <style  id="root-colors-theme"></style>
         
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
-        </script>
         <script type="text/javascript"              src="/assets/beta/storage.js"></script>
 
         <noscript>
@@ -61,24 +59,17 @@
                 K1S2grades: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSc0wJbt-ppYMnjQch7ZvlUZSVjhT54n9i98Rve7E7NEtNhAS6qFulo81MSQ80jn-0YjPMUTsx6NMKP/pubhtml?widget=true&amp;headers=true',
                 K1S2final: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSyjIqzrp8NRTuO3dSTx9b-oh0PU829_D3sv9wSTSzfmt8fREvfMyC-MchGSVFcnSgu3PJziA8b3KaS/pubhtml?widget=true&amp;headers=true',
             }
-
-            var URL = '', table = ''
-            try {
-                URL = { key: document.location.href.split('?')[1].split('=')[0], value: document.location.href.split('?')[1].split('=')[1] }
-            } catch (e) {
-                logs('info', `No one argument in URL (${e})`)
-                URL = { key: 'none', value: 'none' }
-            }
             
-            if (URL.key == 'pres') {
+            if (REQUEST.pres != undefined) {
                 output('loadText', '<h2 style="text-align: center; margin-top: 64px;">Загрука, подождите...</h2>')
-                if (URL.value == 'attendance') {
-                    navbar(URL.value)
+                if (REQUEST.pres == 'attendance') {
+                    navbar('attendance')
                     output('csc11-title-of-page', 'Посещаемость, КСК-11')
                     table = TABLELIST.K1attendance
                 }
-                else if (URL.value == 'grades') {
-                    navbar(URL.value)
+                else if (REQUEST.pres == 'grades') {
+                    navbar('grades')
+                    output('csc11-title-of-page', 'Оценки, КСК-11')
                     table = TABLELIST.K1S2grades
                 }
                 else {
@@ -93,12 +84,12 @@
                 `)
                 gTableTheme()
             }
-            else if (URL.key == 'table') {
+            else if (REQUEST.table != undefined) {
                 output('loadText', '<h2 style="text-align: center; margin-top: 64px;">Загрука, подождите...</h2>')
                 navbar('other')
                 output('iframeTable', `
                 <div style="height: calc(100% - 73px); width: 100%; position: absolute; z-index: 3;">
-                    <iframe style="border: none; width: 100%; height: 100%;" src="${URL.value}"></iframe>
+                    <iframe style="border: none; width: 100%; height: 100%;" src="${REQUEST.table}"></iframe>
                 </div>
                 `)
                 gTableTheme()

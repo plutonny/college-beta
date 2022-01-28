@@ -9,16 +9,13 @@
         <meta   name="theme-color" id="theme-color" content="#202020">
 
         <title  id="csc11-title-of-page"            >Ошибка :(</title>
-        <link   rel="manifest"                      href="/college-beta/manifest.json">
 
+        <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
+
+        <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="icon"                          href="/assets/beta/settings.png">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
-        
         <script type="text/javascript"              src="/assets/beta/debug.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script>
-            if (BETA) { eruda.init() }
-        </script>
 
         <noscript>
             <style>
@@ -47,20 +44,7 @@
 
         <div id="error" style="margin-left: 16px; margin-right: 16px;">
             <script>
-                if (URL == '') {
-                    output('error', `
-                        <h1 style="margin-bottom: 76px; margin-top: 76px; text-align: center;">Произошла критическая ошибка!</h1>
-                        <h3 style="text-align: center;">Что случилось?<br>Сайт говорит нам неведомые "${sessionStorage.getItem('errorPageError')}"</h3>
-                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">
-                            <button style="height: 36px; width: 196px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="history.back(); sessionStorage.removeItem('errorPageLog'); sessionStorage.removeItem('errorPageError')">Вернуться назад</button>
-                            <button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>
-                        </div>
-                        <h3 style="text-align: center; margin-top: 48px;">Если хотите помочь <a href="https://vk.me/pltny" target="_blank">разработчику</a> разобраться в этой проблеме быстрее,<br>нажмите на кнопку ниже и отправьте <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
-                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
-                            <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="allInfoErrorModal(sessionStorage.getItem('errorPageError'), sessionStorage.getItem('errorPageLog'))">Дополнительная информация</button>
-                        </div>
-                    `)
-                } else if (URL == 'gtable') {
+                if (REQUEST.err == 'gtable') {
                     output('error', `
                         <style>
                             :root {
@@ -80,6 +64,19 @@
                             <button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>
                         </div>
                         <h3 style="text-align: center; margin-top: 48px;">Если вы попали сюда случайно, напишите <a href="https://vk.me/pltny" target="_blank">разработчику</a>, чтобы разобраться в этой проблеме. Советую нажать а кнопку ниже и скинуть <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
+                            <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="allInfoErrorModal(sessionStorage.getItem('errorPageError'), sessionStorage.getItem('errorPageLog'))">Дополнительная информация</button>
+                        </div>
+                    `)
+                } else {
+                    output('error', `
+                        <h1 style="margin-bottom: 76px; margin-top: 76px; text-align: center;">Произошла критическая ошибка!</h1>
+                        <h3 style="text-align: center;">Что случилось?<br>Сайт говорит нам неведомые "${sessionStorage.getItem('errorPageError')}"</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">
+                            <button style="height: 36px; width: 196px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="history.back(); sessionStorage.removeItem('errorPageLog'); sessionStorage.removeItem('errorPageError')">Вернуться назад</button>
+                            <button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>
+                        </div>
+                        <h3 style="text-align: center; margin-top: 48px;">Если хотите помочь <a href="https://vk.me/pltny" target="_blank">разработчику</a> разобраться в этой проблеме быстрее,<br>нажмите на кнопку ниже и отправьте <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
                             <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="allInfoErrorModal(sessionStorage.getItem('errorPageError'), sessionStorage.getItem('errorPageLog'))">Дополнительная информация</button>
                         </div>
