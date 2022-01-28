@@ -88,7 +88,7 @@
                     <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/timetable/?q=week')">Расписание на неделю</button>
                 </div>`
             } else {
-                logs('critical', 'Error: timetable page cant find current response')
+                error(true, 'Error: timetable page cant find current response')
             }
 
             output('content', `
