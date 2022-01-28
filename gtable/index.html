@@ -21,7 +21,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 10; </script>
+        <script> var thisPageBuild = 11; </script>
         
         <style  id="root-colors-theme"></style>
         
@@ -44,7 +44,7 @@
         <div class="modal" id="modal"></div>
         <div class="header" id="header"></div>
         <div class="navbar" id="navbar"></div>
-        <div id="loadText" style="position: absolute; width: 100%;"></div>
+        <div id="loadText" style="height: 100vh; width: 100vw; position: absolute; display: flex; justify-content: center; align-content: center; align-items: center;"></div>
         <div id="iframeTable"></div>
         <div class="content" id="content"></div>
         
@@ -61,7 +61,7 @@
             }
             
             if (REQUEST.pres != undefined) {
-                output('loadText', '<h2 style="text-align: center; margin-top: 64px;">Загрука, подождите...</h2>')
+                output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
                 if (REQUEST.pres == 'attendance') {
                     navbar('attendance')
                     output('csc11-title-of-page', 'Посещаемость, КСК-11')
@@ -84,7 +84,7 @@
                 gTableTheme()
             }
             else if (REQUEST.table != undefined) {
-                output('loadText', '<h2 style="text-align: center; margin-top: 64px;">Загрука, подождите...</h2>')
+                output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
                 navbar('other')
                 output('iframeTable', `
                 <div style="height: calc(100% - 73px); width: 100%; position: absolute; z-index: 3;">
