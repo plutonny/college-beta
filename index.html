@@ -50,11 +50,11 @@
         <script>
             if (REQUEST.timetable != undefined) {
                 var inj = ''
-                output('csc11-title-of-page', 'Расписание, КСК-11')
+                page.output('csc11-title-of-page', 'Расписание, КСК-11')
                 if (REQUEST.timetable == 'week') {
                     header(`Расписание на неделю`, false, true)
                     navbar('home')
-                    output('greeting', `
+                    page.output('greeting', `
                     <style>
                         .content { padding: 12px 24px 73px 24px !important; }
                         .greeting { margin-bottom: 8px; width: 100%; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-evenly; }
@@ -89,10 +89,10 @@
                         <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 16px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Расписание на неделю</button>
                     </div>`
                 } else {
-                    error(true, 'Error: timetable page cant find current response')
+                    page.critical('Error: timetable page cant find current response')
                 }
 
-                output('content', `
+                page.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                     </style>
@@ -103,27 +103,27 @@
                 try {
                     var headerUsername = '', headerGretings = '';
                     var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
-                         if (!deviceStorage('check', 'username'))                   { headerUsername += `, ${deviceStorage('get', 'username')}` }
+                         if (!deviceStorage.check('username'))                   { headerUsername += `, ${deviceStorage.get('username')}` }
                          if (CURRDATE.getHours() >= 5  && CURRDATE.getHours() < 12) { headerGretings += `Доброе утро` } 
                     else if (CURRDATE.getHours() >= 12 && CURRDATE.getHours() < 17) { headerGretings += `Добрый день` } 
                     else if (CURRDATE.getHours() >= 17 && CURRDATE.getHours() < 22) { headerGretings += `Добрый вечер`} 
                     else                                                            { headerGretings += `Доброй ночи` }
                     header(`${headerGretings}${headerUsername}!`, true, false);
-                } catch (e) { error(false, `Error: home page (${e})`) }
+                } catch (e) { page.error(`Error: home page (${e})`) }
 
                 try {
                     var greetingFirst = '', greetingSecond = ''
                     if (CURRDATE.getDay() == 0) { greetingFirst = 'Сегодня пар нет' } 
                     else                          { greetingFirst = pairGet('timeCurrent') }
                     greetingSecond = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}, ${WEEK.name.RU} неделя`
-                    output('greeting', `
+                    page.output('greeting', `
                         <style>
                             .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
                         </style>
                         <a style="font-size:28px; margin:0px; text-decoration: none;" href="/college${betaRepos}/?timetable=alerts">${greetingFirst}</a>
                         <p style="font-size:16px; margin:0px;">${greetingSecond}</p>
                     `)
-                } catch (e) { error(false, `Error: home page (${e})`) }
+                } catch (e) { page.error(`Error: home page (${e})`) }
 
                 try {
                     var pairTitle = '', pairWeekNum = 0;
@@ -135,10 +135,10 @@
                           if (pairGet('timeCurrent') == 'Пары закончились') { pairTitle = 'Пары завтра:'; pairWeekNum = CURRDATE.getDay() + 1 }
                         else                                                { pairTitle = 'Пары сегодня:'; pairWeekNum = CURRDATE.getDay() }
                     }
-                } catch (e) { error(false, `Error: home page (${e})`) }
+                } catch (e) { page.error(`Error: home page (${e})`) }
 
                 try {
-                    output('content', `
+                    page.output('content', `
                         <style>
                             .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
                         </style>
@@ -150,12 +150,12 @@
                             <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Все пары</button>
                         </div>
                     `)
-                } catch (e) { error(false, `Error: home page (${e})`) }
+                } catch (e) { page.error(`Error: home page (${e})`) }
             }
         </script>
 
         <script>
-            deviceStorage('write', 'homeBuildPage', thisPageBuild)
+            deviceStorage.write('homeBuildPage', thisPageBuild)
         </script>
     </body>
 </html>

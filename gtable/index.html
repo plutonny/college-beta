@@ -61,42 +61,42 @@
             }
             
             if (REQUEST.pres != undefined) {
-                output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
+                page.output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
                 if (REQUEST.pres == 'attendance') {
                     navbar('attendance')
-                    output('csc11-title-of-page', 'Посещаемость, КСК-11')
+                    page.output('csc11-title-of-page', 'Посещаемость, КСК-11')
                     table = TABLELIST.K1attendance
                 }
                 else if (REQUEST.pres == 'grades') {
                     navbar('grades')
-                    output('csc11-title-of-page', 'Оценки, КСК-11')
+                    page.output('csc11-title-of-page', 'Оценки, КСК-11')
                     table = TABLELIST.K1S2grades
                 }
                 else {
                     navbar('other')
                     table = `/college${betaRepos}/error/?err=gtable`
                 }
-                output('iframeTable', `
+                page.output('iframeTable', `
                 <div style="height: calc(100% - 73px); width: 100%; position: absolute; z-index: 3;">
                     <iframe style="border: none; width: 100%; height: 100%;" src="${table}"></iframe>
                 </div>
                 `)
-                gTableTheme()
+                theme.gtable()
             }
             else if (REQUEST.table != undefined) {
-                output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
+                page.output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
                 navbar('other')
-                output('iframeTable', `
+                page.output('iframeTable', `
                 <div style="height: calc(100% - 73px); width: 100%; position: absolute; z-index: 3;">
                     <iframe style="border: none; width: 100%; height: 100%;" src="${REQUEST.table}"></iframe>
                 </div>
                 `)
-                gTableTheme()
+                theme.gtable()
             }
             else {
                 header(`Список таблиц`, false, true)
                 navbar('other')
-                output('content', `
+                page.output('content', `
                 <style>
                     .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                 </style>
@@ -145,7 +145,7 @@
                 `)
             }
 
-            deviceStorage('write', 'gtableBuildPage', thisPageBuild)
+            deviceStorage.write('gtableBuildPage', thisPageBuild)
         </script>
     </body>
 </html>

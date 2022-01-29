@@ -35,7 +35,7 @@
         <div id="error" style="margin-left: 16px; margin-right: 16px;">
             <script>
                 if (REQUEST.err == 'gtable') {
-                    output('error', `
+                    page.output('error', `
                         <style>
                             :root {
                                 --root-text-color      :#000000;
@@ -59,7 +59,7 @@
                         </div>
                     `)
                 } else {
-                    output('error', `
+                    page.output('error', `
                         <h1 style="margin-bottom: 76px; margin-top: 76px; text-align: center;">Произошла критическая ошибка!</h1>
                         <h3 style="text-align: center;">Что случилось?<br>Сайт говорит нам неведомые "${sessionStorage.getItem('errorPageError')}"</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">

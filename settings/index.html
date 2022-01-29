@@ -49,13 +49,13 @@
             /*
             var themeTimeF = '', themeTimeT = '';
 
-            if (!deviceStorage('check', 'themeType3Time')) { 
-                themeTimeF = deviceStorage('get', 'themeType3Time').charAt(0) + deviceStorage('get', 'themeType3Time').charAt(1) + deviceStorage('get', 'themeType3Time').charAt(2) + deviceStorage('get', 'themeType3Time').charAt(3) + deviceStorage('get', 'themeType3Time').charAt(4); 
-                themeTimeT = deviceStorage('get', 'themeType3Time').charAt(5) + deviceStorage('get', 'themeType3Time').charAt(6) + deviceStorage('get', 'themeType3Time').charAt(7) + deviceStorage('get', 'themeType3Time').charAt(8) + deviceStorage('get', 'themeType3Time').charAt(9);
+            if (!deviceStorage.check('themeType3Time')) { 
+                themeTimeF = deviceStorage.get('themeType3Time').charAt(0) + deviceStorage.get('themeType3Time').charAt(1) + deviceStorage.get('themeType3Time').charAt(2) + deviceStorage.get('themeType3Time').charAt(3) + deviceStorage.get('themeType3Time').charAt(4); 
+                themeTimeT = deviceStorage.get('themeType3Time').charAt(5) + deviceStorage.get('themeType3Time').charAt(6) + deviceStorage.get('themeType3Time').charAt(7) + deviceStorage.get('themeType3Time').charAt(8) + deviceStorage.get('themeType3Time').charAt(9);
             }
             function tytheme3(setting) { 
                 if (setting == 'get') { 
-                      if (deviceStorage('check', 'themeType3Time')) { return 'не назначено' } 
+                      if (deviceStorage.check('themeType3Time')) { return 'не назначено' } 
                     else { return `${themeTimeF} - ${themeTimeT}` } 
                 }
                 else if (setting == 'set') {
@@ -63,11 +63,11 @@
                     <div style="max-height: 95%; overflow-y: auto; margin-right: 5%; margin-left: 5%; padding-right: 12px; padding-left: 12px; background-color: var(--primary-bg-color); border: none; border-radius: 24px; box-shadow: 0px 0px 8px var(--navbar-box-color);">
                         <h1 style="font-family: 'Montserrat' !important; text-align: center; margin: 16px;">Время</h1>
                         <b style="font-family: 'Montserrat' !important; margin:16px;">Светлая тема:</b>
-                        <div style="margin-left: 12px;"><label for="settingstimefrom" style="font-family: 'Montserrat' !important; margin:16px;">С:</label><input ${!deviceStorage('check', 'themeType3Time') ? `value="${themeTimeF}"` : ''} type="time" id="settingstimefrom" name="settingstimefrom" min="00:01" max="23:59" style="padding-left: 16px; padding-right: 16px; color: var(--root-text-color); border: none; border-radius: 18px; background-color: var(--secondary-bg-color); height: 22px; margin-top: 8px; margin-left: 4px;"></div>
-                        <div style="margin-left: 12px;"><label for="settingstimeto" style="font-family: 'Montserrat' !important; margin:16px;">По:</label><input ${!deviceStorage('check', 'themeType3Time') ? `value="${themeTimeT}"` : ''} type="time" id="settingstimeto" name="settingstimeto" min="00:01" max="23:59" style="padding-left: 16px; padding-right: 16px; color: var(--root-text-color); border: none; border-radius: 18px; background-color: var(--secondary-bg-color); height: 22px; margin-top: 8px; margin-left: 4px;"></div>
+                        <div style="margin-left: 12px;"><label for="settingstimefrom" style="font-family: 'Montserrat' !important; margin:16px;">С:</label><input ${!deviceStorage.check('themeType3Time') ? `value="${themeTimeF}"` : ''} type="time" id="settingstimefrom" name="settingstimefrom" min="00:01" max="23:59" style="padding-left: 16px; padding-right: 16px; color: var(--root-text-color); border: none; border-radius: 18px; background-color: var(--secondary-bg-color); height: 22px; margin-top: 8px; margin-left: 4px;"></div>
+                        <div style="margin-left: 12px;"><label for="settingstimeto" style="font-family: 'Montserrat' !important; margin:16px;">По:</label><input ${!deviceStorage.check('themeType3Time') ? `value="${themeTimeT}"` : ''} type="time" id="settingstimeto" name="settingstimeto" min="00:01" max="23:59" style="padding-left: 16px; padding-right: 16px; color: var(--root-text-color); border: none; border-radius: 18px; background-color: var(--secondary-bg-color); height: 22px; margin-top: 8px; margin-left: 4px;"></div>
                         <div style="display: flex; justify-content: center;">
-                            <button style="font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 24px; height: 36px; font-size: 17px; width: 128px; margin: 16px;" onclick="document.getElementById('modal').innerHTML = ''; theme('load')">Отмена</button>
-                            <button style="font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 24px; height: 36px; font-size: 17px; width: 148px; margin: 16px; background-color: #00ff0020;" onclick="deviceStorage('write', 'themeType3Time', settingstimefrom.value + settingstimeto.value); document.getElementById('modal').innerHTML = ''; theme('load')">Сохранить</button>
+                            <button style="font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 24px; height: 36px; font-size: 17px; width: 128px; margin: 16px;" onclick="document.getElementById('modal').innerHTML = ''; theme.load()">Отмена</button>
+                            <button style="font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 24px; height: 36px; font-size: 17px; width: 148px; margin: 16px; background-color: #00ff0020;" onclick="deviceStorage.write('themeType3Time', settingstimefrom.value + settingstimeto.value); document.getElementById('modal').innerHTML = ''; theme.load()">Сохранить</button>
                         </div>
                     </div>
                     `)
@@ -75,7 +75,7 @@
             }
             */
 
-            output(`settings`, `
+            page.output(`settings`, `
             <style>
                 .settings { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                 input[type="time"]::-webkit-calendar-picker-indicator { display: none; }
@@ -83,7 +83,7 @@
 
             <div style="display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap;">
                 <p style="margin-right: 14px;">Ник:</p>
-                <input type="text" id="username" autocomplete="off" style="padding-left: 6px; color: var(--root-text-color); border: none; border-radius: 18px; background-color: var(--primary-bg-color); height: 22px; width: 156px;" ${ deviceStorage('check', 'username') ? '' : `value="${deviceStorage('get', 'username')}"` }>
+                <input type="text" id="username" autocomplete="off" style="padding-left: 6px; color: var(--root-text-color); border: none; border-radius: 18px; background-color: var(--primary-bg-color); height: 22px; width: 156px;" ${ deviceStorage.check('username') ? '' : `value="${deviceStorage.get('username')}"` }>
                 <p id="usernamesave" style="font-size: 14px; margin-left: 12px; opacity: 0.5; user-select: none;"></p>
             </div>
 
@@ -91,20 +91,20 @@
                 <p>Работа смены темы:</p>
                 <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                     <div style="display: flex; align-items: center;">
-                        <input type="radio" id="tytheme1" name="tytheme" ${deviceStorage('get', 'themeType') == 1 ? 'checked' : ''} onchange="settingsChangeType(1)" style="margin: 0px 12px 0px 6px;" value="theme">
+                        <input type="radio" id="tytheme1" name="tytheme" ${deviceStorage.get('themeType') == 1 ? 'checked' : ''} onchange="settingsChangeType(1)" style="margin: 0px 12px 0px 6px;" value="theme">
                         <label for="tytheme1">по нажатию кнопки</label>
                     </div>
                     <div style="margin: 6px 0px 6px 16px; display: flex; align-items: center;">
-                        <input type="checkbox" id="entheme" name="entheme" ${deviceStorage('get', 'themeEnableThemeButton') == 'true' ? 'checked' : ''} ${deviceStorage('get', 'themeType') == 2 || deviceStorage('get', 'themeType') == 3 ? 'disabled="disabled"' : ''} onchange="settingsEnableThemeButton()" style="margin: 0px 12px 0px 6px;" value="theme">
+                        <input type="checkbox" id="entheme" name="entheme" ${deviceStorage.get('themeEnableThemeButton') == 'true' ? 'checked' : ''} ${deviceStorage.get('themeType') == 2 || deviceStorage.get('themeType') == 3 ? 'disabled="disabled"' : ''} onchange="settingsEnableThemeButton()" style="margin: 0px 12px 0px 6px;" value="theme">
                         <label for="entheme">включить кнопку смены темы</label>
                     </div>
                     <div style="display: flex; align-items: center;">
-                        <input type="radio" id="tytheme2" name="tytheme" ${deviceStorage('get', 'themeType') == 2 ? 'checked' : ''} onchange="settingsChangeType(2)" style="margin: 0px 12px 0px 6px;" value="theme">
+                        <input type="radio" id="tytheme2" name="tytheme" ${deviceStorage.get('themeType') == 2 ? 'checked' : ''} onchange="settingsChangeType(2)" style="margin: 0px 12px 0px 6px;" value="theme">
                         <label for="tytheme2">по времени рассвета/заката</label>
                     </div>`+/*`
                     <!--
                     <div style="margin-top: 3px;">
-                        <input type="radio" id="tytheme3" name="tytheme" ${deviceStorage('get', 'themeType') == 3 ? 'checked' : ''} onchange="settingsChangeType(3)" onclick="tytheme3('set')" style="margin-right: 12px;" value="theme">
+                        <input type="radio" id="tytheme3" name="tytheme" ${deviceStorage.get('themeType') == 3 ? 'checked' : ''} onchange="settingsChangeType(3)" onclick="tytheme3('set')" style="margin-right: 12px;" value="theme">
                         <label for="tytheme3">по времени: ${tytheme3('get')}</label>
                     </div>
                     -->`+*/`
@@ -113,27 +113,27 @@
             `)
 
             var themeCheckboxBox = document.getElementById('entheme');
-            function settingsEnableThemeButton() { deviceStorage('write', 'themeEnableThemeButton', deviceStorage('get', 'themeEnableThemeButton') == 'true' ? false : true); header('Настройки', deviceStorage('get', 'themeEnableThemeButton') == 'true', true)}
+            function settingsEnableThemeButton() { deviceStorage.write('themeEnableThemeButton', deviceStorage.get('themeEnableThemeButton') == 'true' ? false : true); header('Настройки', deviceStorage.get('themeEnableThemeButton') == 'true', true)}
             
             /* 1 - theme button (or none); 2 - sunrise/sunset; 3 - custom time */
             function settingsChangeType(type) { 
-                deviceStorage('write', 'themeType', `${type}`)
+                deviceStorage.write('themeType', `${type}`)
                 if (type == 1) { 
-                    deviceStorage('write', 'themeEnableThemeButton', `true`); themeCheckboxBox.setAttribute('checked', 'checked')
+                    deviceStorage.write('themeEnableThemeButton', `true`); themeCheckboxBox.setAttribute('checked', 'checked')
                     header(`Настройки`, true, true)
                 }
                 if (type == 2 || type == 3) {
-                    deviceStorage('write', 'themeEnableThemeButton', `false`); themeCheckboxBox.removeAttribute('checked')
+                    deviceStorage.write('themeEnableThemeButton', `false`); themeCheckboxBox.removeAttribute('checked')
                     header(`Настройки`, false, true)
                 } 
-                theme('load') 
+                theme.load()
             }
 
-            username.oninput = async function() { deviceStorage('write', 'username', username.value); usernamesave.innerHTML = 'сохранено'; await sleep(2500); usernamesave.innerHTML = '' }
+            username.oninput = async function() { deviceStorage.write('username', username.value); usernamesave.innerHTML = 'сохранено'; await page.sleep(2500); usernamesave.innerHTML = '' }
         </script>
 
         <script>
-            deviceStorage('write', 'settingsBuildPage', thisPageBuild)
+            deviceStorage.write('settingsBuildPage', thisPageBuild)
         </script>
     </body>
 </html>

@@ -49,15 +49,15 @@
         <script>
             if (REQUEST.p == 'seating') {
                 header(`Рассадка`, false, true)
-                output('csc11-title-of-page', 'Рассадка, КСК-11')
-                output('content', `
+                page.output('csc11-title-of-page', 'Рассадка, КСК-11')
+                page.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 38px 8px 73px 8px; min-height: calc(100vh - 100px); }
                         td.other_table { border: 1px solid var(--root-text-color); height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
                         .other_table_num { width: 15px; border: 1px solid var(--root-text-color);  font-family: 'Montserrat'; }
                     </style>
 
-                    <table style="text-align: center; border-collapse: collapse; margin: auto; background-color: var(--root-navbar-bg-color);">
+                    <table style="text-align: center; border-collapse: collapse; margin: auto; background-color: var(--primary-bg-color);">
                         <tr class="other_table_num">
                             <td class="other_table_num">№</td>
                             <td class="other_table_num">1</td>
@@ -99,7 +99,7 @@
             }
             else {
                 header(`Другое`, true, false)
-                output('content', `
+                page.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                     </style>
@@ -132,7 +132,7 @@
         </script>
 
         <script>
-            deviceStorage('write', 'otherBuildPage', thisPageBuild)
+            deviceStorage.write('otherBuildPage', thisPageBuild)
         </script>
     </body>
 </html>
