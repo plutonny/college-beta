@@ -21,7 +21,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 68; </script>
+        <script> var thisPageBuild = 69; </script>
         
         <style  id="root-colors-theme"></style>
 
@@ -53,46 +53,46 @@
                 page.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 38px 8px 73px 8px; min-height: calc(100vh - 100px); }
-                        td.other_table { border: 1px solid var(--root-text-color); height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
-                        .other_table_num { width: 15px; border: 1px solid var(--root-text-color);  font-family: 'Montserrat'; }
+                        td.seatingTableTD { border: 1px solid #707070; height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
+                        .seatingTableNUM { width: 15px; border: 1px solid #707070;  font-family: 'Montserrat'; }
                     </style>
 
-                    <table style="border: 1px solid var(--root-text-color); text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--primary-bg-color); border-top-left-radius: 18px; border-top-right-radius: 18px; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
-                        <tr class="other_table_num btl btr">
-                            <td class="other_table_num btl"></td>
-                            <td class="other_table_num">1</td>
-                            <td class="other_table_num">2</td>
-                            <td class="other_table_num btr">3</td>
+                    <table style="border: 1px solid #707070; border-radius: 18px; text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--primary-bg-color);">
+                        <tr class="seatingTableNUM btl btr">
+                            <td class="seatingTableNUM btl"></td>
+                            <td class="seatingTableNUM">1</td>
+                            <td class="seatingTableNUM">2</td>
+                            <td class="seatingTableNUM btr">3</td>
                         </tr>
-                        <tr class="other_table">
-                            <td class="other_table">1</td>
-                            <td class="other_table">Никитин<br>Павозков</td>
-                            <td class="other_table">Ивин</td>
-                            <td class="other_table">Кузнецов<br>Савинов</td>
+                        <tr>
+                            <td class="seatingTableTD">1</td>
+                            <td class="seatingTableTD">Никитин<br>Павозков</td>
+                            <td class="seatingTableTD">Ивин</td>
+                            <td class="seatingTableTD">Кузнецов<br>Савинов</td>
                         </tr>
-                        <tr class="other_table">
-                            <td class="other_table">2</td>
-                            <td class="other_table">Никонов<br>Поликевич</td>
-                            <td class="other_table">Каралин<br>Адилов</td>
-                            <td class="other_table">Едемский<br>Михеева</td>
+                        <tr>
+                            <td class="seatingTableTD">2</td>
+                            <td class="seatingTableTD">Никонов<br>Поликевич</td>
+                            <td class="seatingTableTD">Каралин<br>Адилов</td>
+                            <td class="seatingTableTD">Едемский<br>Михеева</td>
                         </tr>
-                        <tr class="other_table">
-                            <td class="other_table">3</td>
-                            <td class="other_table">Ципилев</td>
-                            <td class="other_table">Сибирцев<br>Кубышкина</td>
-                            <td class="other_table">Печинкина<br>Петров</td>
+                        <tr>
+                            <td class="seatingTableTD">3</td>
+                            <td class="seatingTableTD">Ципилев</td>
+                            <td class="seatingTableTD">Сибирцев<br>Кубышкина</td>
+                            <td class="seatingTableTD">Печинкина<br>Петров</td>
                         </tr>
-                        <tr class="other_table">
-                            <td class="other_table">4</td>
-                            <td class="other_table">Барзаногова</td>
-                            <td class="other_table">Дейнега<br>Некрасов</td>
-                            <td class="other_table">Алексеев<br>Клюкин</td>
+                        <tr>
+                            <td class="seatingTableTD">4</td>
+                            <td class="seatingTableTD">Барзаногова</td>
+                            <td class="seatingTableTD">Дейнега<br>Некрасов</td>
+                            <td class="seatingTableTD">Алексеев<br>Клюкин</td>
                         </tr>
-                        <tr class="other_table bbl bbr">
-                            <td class="other_table bbl">5</td>
-                            <td class="other_table">Байбородин<br>Бойко</td>
-                            <td class="other_table">Чебыкин</td>
-                            <td class="other_table bbr"></td>
+                        <tr class="bbl bbr">
+                            <td class="seatingTableTD bbl">5</td>
+                            <td class="seatingTableTD">Байбородин<br>Бойко</td>
+                            <td class="seatingTableTD">Чебыкин</td>
+                            <td class="seatingTableTD bbr"></td>
                         </tr>
                     </table>
                 `)
