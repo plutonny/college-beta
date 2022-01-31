@@ -15,7 +15,7 @@
         <link   rel="icon"                          href="/assets/settings.png">
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
-        <script type="text/javascript"              src="/assets/beta/debug.js"></script>
+        <script type="text/javascript"              src="/assets/beta/preload.js"></script>
 
         <noscript>
             <style>
@@ -34,6 +34,27 @@
 
         <div id="error" style="margin-left: 16px; margin-right: 16px;">
             <script>
+                /**
+                 *  Output modal with additional info in error page
+                 */
+                function allInfoErrorModal(selfError) {
+                    var listLocalStrage =  '';
+                    for (var i = 0; i < localStorage.length; i++) { listLocalStrage += `<p style="font-family: 'Montserrat' !important; background-color: #00000020; border-radius: 12px; padding: 4px 8px; margin: 4px; font-size: 14px;">${localStorage.key(i)} - ${localStorage.getItem(localStorage.key(i))}</p>`  }
+                    modal(`
+                    <div style="max-height: 95%; overflow-y: auto; margin-right: 5%; margin-left: 5%; padding-right: 12px; padding-left: 12px; background-color: var(--primary-bg-color); border: none; border-radius: 24px; box-shadow: 0px 0px 8px var(--navbar-box-color);">
+
+                        <h2 style="font-family: 'Montserrat' !important; text-align: center; margin: 16px 6px; background-color: #ff000070; border-radius: 12px; padding: 6px;">${selfError}</h2>
+
+                        <p style="font-family: 'Montserrat' !important; margin:16px; text-align: center; font-size: 20px;">Ключи localStorage:</p>
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">${listLocalStrage}</div>
+
+                        <div style="display:flex;justify-content:center;">
+                            <button style="font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 24px; height: 36px; font-size: 17px; width: 256px; margin: 4px 16px 16px 16px;" onclick="document.getElementById('modal').innerHTML = ''">Закрыть</button>
+                        </div>
+                    </div>
+                `)
+                }
+
                 if (REQUEST.err == 'gtable') {
                     page.output('error', `
                         <style>
@@ -51,7 +72,6 @@
                         <h3 style="text-align: center;">Что случилось?<br>Кажется, вы попытались открыть страницу с таблицей, но что-то пошло не так...</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">
                             <button style="height: 36px; width: 196px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="history.back(); sessionStorage.removeItem('errorPageLog'); sessionStorage.removeItem('errorPageError')">Вернуться назад</button>
-                            <button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>
                         </div>
                         <h3 style="text-align: center; margin-top: 48px;">Если вы попали сюда случайно, напишите <a href="https://vk.me/pltny" target="_blank">разработчику</a>, чтобы разобраться в этой проблеме. Советую нажать а кнопку ниже и скинуть <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">

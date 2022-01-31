@@ -25,8 +25,9 @@
         
         <style  id="root-colors-theme"></style>
         
-        <script type="text/javascript"              src="/assets/beta/debug.js"></script>
-        <script type="text/javascript"              src="/assets/beta/storage.js"></script>
+        <script type="text/javascript"              src="/assets/beta/preload.js"></script>
+        <script type="text/javascript"              src="/assets/beta/frames.js"></script>
+        <script type="text/javascript"              src="/assets/beta/main.js"></script>
 
         <noscript>
             <style>
@@ -42,13 +43,28 @@
     </head>
     <body>
         <div class="modal" id="modal"></div>
-        <div class="header" id="header">
-            <script>header(`Поддержка`, false, true)</script>
-        </div>
-        <div class="content" id="content">Anyway пустая ахаха</div>
+        <div class="header" id="header"><script>frames.header(`Поддержка`, false, true)</script></div>
+        <div class="navbar" id="navbar"><script>frames.navbar('other')</script></div>
+        <div class="greeting" id="greeting"></div>
+        <div class="content" id="content"></div>
 
         <script>
-            deviceStorage('write', 'supportBuildPage', thisPageBuild)
+            page.output('greeting', `
+                <style>
+                    .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
+                </style>
+                <p style="font-size:28px; margin:0px; text-decoration: none;">Чем могу помочь?</p>
+                <p style="font-size:16px; margin:0px;">Помощь в популярных проблемах</p>
+            `)
+            page.output('content', `
+                <style>
+                    .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
+                </style>
+            `)
+        </script>
+
+        <script>
+            deviceStorage.write('supportBuildPage', thisPageBuild)
         </script>
     </body>
 </html>

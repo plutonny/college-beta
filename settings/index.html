@@ -24,8 +24,9 @@
         
         <style  id="root-colors-theme"></style>
         
-        <script type="text/javascript"              src="/assets/beta/debug.js"></script>
-        <script type="text/javascript"              src="/assets/beta/storage.js"></script>
+        <script type="text/javascript"              src="/assets/beta/preload.js"></script>
+        <script type="text/javascript"              src="/assets/beta/frames.js"></script>
+        <script type="text/javascript"              src="/assets/beta/main.js"></script>
 
         <noscript>
             <style>
@@ -41,8 +42,8 @@
     </head>
     <body>
         <div class="modal" id="modal"></div>
-        <div class="header" id="header"><script>header(`Настройки`, true, true)</script></div>
-        <div class="navbar" id="navbar"><script>navbar('other')</script></div>
+        <div class="header" id="header"><script>frames.header(`Настройки`, true, true)</script></div>
+        <div class="navbar" id="navbar"><script>frames.navbar('other')</script></div>
         <div class="settings" id="settings"></div>
 
         <script>
