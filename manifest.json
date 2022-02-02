@@ -5,8 +5,8 @@
   "icons"            : [ { "src": "csc11-pwa-app-icon.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" } ],
   "start_url"        : "index.html",
   "id"               : "index.html",
-  "background_color" : "#202020",
-  "theme_color"      : "#202020",
+  "background_color" : "#22223b",
+  "theme_color"      : "#22223b",
   "display"          : "standalone",
   "orientation"      : "portrait"
 }
