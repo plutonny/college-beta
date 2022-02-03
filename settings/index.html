@@ -114,18 +114,18 @@
             `)
 
             var themeCheckboxBox = document.getElementById('entheme');
-            function settingsEnableThemeButton() { deviceStorage.write('themeEnableThemeButton', deviceStorage.get('themeEnableThemeButton') == 'true' ? false : true); header('Настройки', deviceStorage.get('themeEnableThemeButton') == 'true', true)}
+            function settingsEnableThemeButton() { deviceStorage.write('themeEnableThemeButton', deviceStorage.get('themeEnableThemeButton') == 'true' ? false : true); frames.header('Настройки', deviceStorage.get('themeEnableThemeButton') == 'true', true)}
             
             /* 1 - theme button (or none); 2 - sunrise/sunset; 3 - custom time */
             function settingsChangeType(type) { 
                 deviceStorage.write('themeType', `${type}`)
                 if (type == 1) { 
                     deviceStorage.write('themeEnableThemeButton', `true`); themeCheckboxBox.setAttribute('checked', 'checked')
-                    header(`Настройки`, true, true)
+                    frames.header(`Настройки`, true, true)
                 }
                 if (type == 2 || type == 3) {
                     deviceStorage.write('themeEnableThemeButton', `false`); themeCheckboxBox.removeAttribute('checked')
-                    header(`Настройки`, false, true)
+                    frames.header(`Настройки`, false, true)
                 } 
                 theme.load()
             }
