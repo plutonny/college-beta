@@ -20,7 +20,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 78; </script>
+        <script> var thisPageBuild = 79; </script>
         
         <style  id="root-colors-theme"></style>
         
@@ -95,10 +95,7 @@
                     page.critical('Error: timetable page cant find current response')
                 }
 
-                page.output('content', `
-                    
-                    ${inj}
-                `)
+                page.output('content', inj)
                 if (REQUEST.timetable == 'week') { TIMETABLE.pair.weekChanger(CURRDATE.getDay()) }
             } else {
                 try {
@@ -116,7 +113,7 @@
                     var greetingFirst = '', greetingSecond = ''
                     if (CURRDATE.getDay() == 0) { greetingFirst = 'Сегодня пар нет' } 
                     else                        { greetingFirst = TIMETABLE.pair.get.current() }
-                    greetingSecond = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}, ${WEEK.name.RU} неделя`
+                    greetingSecond = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}, ${CURRDATE.getDay() == 0 ? `с пон-ка ${WEEK.name.alt.RU}` : WEEK.name.RU} неделя`
                     page.output('greeting', `
                         <style>
                             .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
@@ -124,7 +121,7 @@
                         <a style="font-size:28px; margin:0px; text-decoration: none;" href="/college${betaRepos}/?timetable=alerts">${greetingFirst}</a>
                         <p style="font-size:16px; margin:0px;">${greetingSecond}</p>
                     `)
-                } catch (e) { page.error(`Error: home page (${e})`) }
+                } catch (e) { page.error(`Error: home page greeting (${e})`) }
 
                 try {
                     var pairTitle = '', pairWeekNum = 0;
@@ -136,22 +133,20 @@
                           if (TIMETABLE.pair.get.current() == 'Пары закончились') { pairTitle = 'Пары завтра:'; pairWeekNum = CURRDATE.getDay() + 1 }
                         else                                                      { pairTitle = 'Пары сегодня:'; pairWeekNum = CURRDATE.getDay() }
                     }
-                } catch (e) { page.error(`Error: home page (${e})`) }
+                } catch (e) { page.error(`Error: home page content (${e})`) }
 
-                try {
-                    page.output('content', `
-                        <style>
-                            .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
-                        </style>
-                        <p style="margin: 0px 0px 24px 0px; font-size: 22px;">${pairTitle}</p>
+                page.output('content', `
+                    <style>
+                        .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
+                    </style>
+                    <p style="margin: 0px 0px 24px 0px; font-size: 22px;">${pairTitle}</p>
 
-                        ${TIMETABLE.pair.get.HTML.day(TIMETABLE.pair.get.listOfDay([pairWeekNum, CURRDATE.getDay() == 0 ? WEEK.name.alt.EN : WEEK.name.EN]))}
+                    ${TIMETABLE.pair.get.HTML.day(TIMETABLE.pair.get.listOfDay([pairWeekNum, CURRDATE.getDay() == 0 ? WEEK.name.alt.EN : WEEK.name.EN]))}
 
-                        <div style="display: flex; justify-content: center;">
-                            <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Все пары</button>
-                        </div>
-                    `)
-                } catch (e) { page.error(`Error: home page (${e})`) }
+                    <div style="display: flex; justify-content: center;">
+                        <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Все пары</button>
+                    </div>
+                `)
             }
         </script>
 
