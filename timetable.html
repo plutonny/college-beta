@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title id="title_page">Расписание | КСК-11</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Plutonny">
+        <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta name="description" content="Дополнительная информация группы КСК-11">
+        <meta name="theme-color" id="theme-color" content="#f0f0f0">
+        <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+        <script type="text/javascript"       src="../storage/solar.js"></script>
+        <script type="text/javascript"       src="../storage/luxon.js"></script>
+
+        <script type="text/javascript"       src="../storage/debug.js"></script>
+        <script type="text/javascript"       src="../storage/frames-min.js"></script>
+        <link rel="icon"                    href="../storage/images/college.png">
+        <link rel="stylesheet" media="all"  href="../storage/main.css">
+        <link rel="manifest" href="manifest.json">
+        <style id="theme_css"></style>
+        <style id="timetable_special_css"></style>
+
+        <style>
+            .timetable_greetings { margin-top: 48px; margin-bottom: 12px; text-align: center; }
+            div.timetable_button { border: 2px solid var(--main-text-color); border-radius: 24px; padding: 2px; margin: 24px; display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: space-between; align-items: center; }
+            button.timetable_button { height: 24px; width: 32%; border: 2px solid var(--main-text-color); border-radius: 16px; }
+
+            .yellow { background-color: var(--timetable-yellow) !important; }
+            .green { background-color: var(--timetable-green) !important; }
+
+            table.timetable_day { width: 80%; text-align: center; border-collapse: collapse; margin: auto; background-color: var(--timetable-bg); }
+            tr.timetable_day_line, tr.timetable_week_weekname, tr.timetable_week_line { height: 25px; }
+            td.timetable_day_num { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 16px; height: 48px; }
+            td.timetable_day_name { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 256px; }
+            td.timetable_day_cab { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 78px; }
+            table.timetable_week { width: 80%; text-align: center; border-collapse: collapse; margin: auto; margin-bottom: 16px; }
+            td.timetable_week_weekname { font-family: 'Montserrat'; font-size: 18px; padding-top: 8px; }
+            td.timetable_week_num { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 16px; height: 48px; background-color: var(--timetable-bg); }
+            td.timetable_week_name { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 256px; background-color: var(--timetable-bg); }
+            td.timetable_week_cab { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 78px; background-color: var(--timetable-bg); }
+            div.timetable_alerts { margin: 24px; }
+            p.timetable_alerts { font-size: 18px; margin: 12px 0px; }
+        </style>
+        <noscript>
+            <div style="font-size: 32px; text-align: center;">
+                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
+                <p>Расписание к сожалению недоступно :(</p>
+            </div>
+        </noscript>
+    </head>
+    <body>
+        <div class="modal" id="modal"></div>
+        <script>
+            var ndt = new Date(), dec31 = new Date(2021, 11, 31)
+            if (!BETA) { headertext = 'расписание' }
+            header(2, `Группа КСК-11`, `${headertext}`, `home`, false, true, false);
+            var weeknameab = ''; if (weekname == 'зеленая') { weeknameab += 'желтая' } else if (weekname == 'желтая') { weeknameab += 'зеленая' }
+            var timetable_name = ''; if ((dt.getDay() == 0) || (dt.getDay() == 6 && dt.getHours() > 14)) { timetable_name += `${weekname} неделя, <br class="mobile">следующая ${weeknameab}` } else (timetable_name += `${weekname} неделя`)
+            /**
+             * styles to logic timetable page
+             * type - 'day' or 'week' or 'alerts'
+             */
+            async function timetable_logic(type) {
+                try {    if (type == 'day')    { document.getElementById('timetable_special_css').innerHTML = `.timetable_button_day { background-color: var(--button-bg-enable); } .timetable_week, .timetable_alerts {display:none;}` }
+                    else if (type == 'week')   { document.getElementById('timetable_special_css').innerHTML = `.timetable_button_week { background-color: var(--button-bg-enable); } .timetable_day, .timetable_alerts {display:none;}` }
+                    else if (type == 'alerts') { document.getElementById('timetable_special_css').innerHTML = `.timetable_button_alerts { background-color: var(--button-bg-enable); } .timetable_week, .timetable_day {display:none;}` }
+                } catch (e) { con('error', `ERROR: logic timetable have any problem (${e})!`) } }
+
+            /* returned day timetable */
+            function get_timetable(type) {
+                try {
+                var timetable_list = 
+                    [`<table class="timetable_${type}">
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name">ОБЖ</td> <td class="timetable_${type}_cab">314</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Грициенко</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">2</td>
+                            <td class="timetable_${type}_name">Физ-ра</td> <td class="timetable_${type}_cab">0100</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Топорков</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">3</td>
+                            <td class="timetable_${type}_name">Физика</td> <td class="timetable_${type}_cab">300</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Момотов</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                    </table>`,
+                    `<table class="timetable_${type}">
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name yellow">Физика</td> <td class="timetable_${type}_cab yellow">300</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name green">Литература</td> <td class="timetable_${type}_cab green">404</td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">2</td>
+                            <td class="timetable_${type}_name yellow">Родная литература</td> <td class="timetable_${type}_cab yellow">413</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name green">Астрономия</td> <td class="timetable_${type}_cab green">300</td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">3</td>
+                            <td class="timetable_${type}_name">Информатика</td> <td class="timetable_${type}_cab">лр</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Цыганкова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                    </table>`,
+                    `<table class="timetable_${type}">
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name">Математика</td> <td class="timetable_${type}_cab">406</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Панфилова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">2</td>
+                            <td class="timetable_${type}_name">Литература</td> <td class="timetable_${type}_cab">404</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Горбова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">3</td>
+                            <td class="timetable_${type}_name yellow">Англ. язык</td> <td class="timetable_${type}_cab yellow">404а/311</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name green">Физ-ра</td> <td class="timetable_${type}_cab green">0100</td>
+                        </tr>
+                    </table>`,
+                    `<table class="timetable_${type}">
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name">Информатика</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Цыганкова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">2</td>
+                            <td class="timetable_${type}_name">Русский язык</td> <td class="timetable_${type}_cab">404</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Горбова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">3</td>
+                            <td class="timetable_${type}_name">Математика</td> <td class="timetable_${type}_cab">406</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Панфилова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                    </table>`,
+                    `<table class="timetable_${type}">
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name yellow">Физика</td> <td class="timetable_${type}_cab yellow">300</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name green">Физика</td> <td class="timetable_${type}_cab green">300</td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">2</td>
+                            <td class="timetable_${type}_name">Математика</td> <td class="timetable_${type}_cab">406</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Панфилова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name yellow">Ин. проект</td> <td class="timetable_${type}_cab yellow"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name green">Ин. проект (ср)</td> <td class="timetable_${type}_cab green">чит. зал</td>
+                        </tr>
+                    </table>`,
+                    `<table class="timetable_${type}">
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">1</td>
+                            <td class="timetable_${type}_name">Англ. язык</td> <td class="timetable_${type}_cab">404а/311</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Венедиктова/Черкасова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">3</td>
+                            <td class="timetable_${type}_name">История</td> <td class="timetable_${type}_cab">407</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Глущенко</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                        <tr class="timetable_${type}_line"><td rowspan="2" class="timetable_${type}_num">2</td>
+                            <td class="timetable_${type}_name">Химия</td> <td class="timetable_${type}_cab">402</td>
+                        </tr>
+                        <tr class="timetable_${type}_line">
+                            <td class="timetable_${type}_name">Петрова</td> <td class="timetable_${type}_cab"></td>
+                        </tr>
+                    </table>`];
+                var timetable_alerts = `<div class="timetable_${type}">
+                    <p class="timetable_${type}"><b>1-я пара:</b> 8:30-9:15, 9:20-10:05</p>
+                    <p class="timetable_${type}"><b>2-я пара:</b> 10:15-11:00, 11:05-11:50</p>
+                    <p class="timetable_${type}"><b>перерыв:</b> 11:50-12:35</p>
+                    <p class="timetable_${type}"><b>3-я пара:</b> 12:35-13:20, 13:25-14:10</p>
+                    <p class="timetable_${type}"><b>4-я пара:</b> 14:20-15:05, 15:10-15:55</p>
+                    <p class="timetable_${type}"><b>5-я пара:</b> 16:05-16:50, 16:55-17:40</p>
+                </div>`;
+                if (type == 'day')  {
+                    if (dt.getDay() == 0) {
+                        return `<div class="timetable_day"><div class="pc"><p class="timetable_day">вчера:</p>` + timetable_list[5] + `</div>` + `<div><p class="timetable_day">понедельник:</p>` + timetable_list[0] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">вторник:</p>` + timetable_list[1] + `</div>` + `</div>` 
+                    } else if (dt.getDay() == 6) {
+                        if (dt.getHours() < 15) { return `<div class="timetable_day"><div><p class="timetable_day">сегодня:</p>` + timetable_list[5] + `</div>` + `<div class="pc"><p class="timetable_day">понедельник:</p>` + timetable_list[0] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">вторник:</p>` + timetable_list[1] + `</div>` + `</div>` }
+                            else                { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">сегодня:</p>` + timetable_list[5] + `</div>` + `<div><p class="timetable_day">понедельник:</p>` + timetable_list[0] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">вторник:</p>` + timetable_list[1] + `</div>` + `</div>` }
+                    } else if (dt.getDay() == 1) {
+                        if (dt.getHours() < 15) { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">суббота:</p>` + timetable_list[5] + `</div>` + `<div><p class="timetable_day">сегодня:</p>` + timetable_list[dt.getDay() - 1] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">завтра:</p>` + timetable_list[dt.getDay()] + `</div>` + `</div>` }
+                            else                { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">сегодня:</p>` + timetable_list[dt.getDay() - 1] + `</div>` + `<div><p class="timetable_day">завтра:</p>` + timetable_list[dt.getDay()] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">послезавтра:</p>` + timetable_list[dt.getDay() + 1] + `</div>` + `</div>` }
+                    } else if (dt.getDay() == 5) {
+                        if (dt.getHours() < 15) { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">вчера:</p>` + timetable_list[dt.getDay() - 2] + `</div>` + `<div><p class="timetable_day">сегодня:</p>` + timetable_list[dt.getDay() - 1] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">завтра:</p>` + timetable_list[dt.getDay()] + `</div>` + `</div>` }
+                            else                { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">сегодня:</p>` + timetable_list[dt.getDay() - 1] + `</div>` + `<div><p class="timetable_day">завтра:</p>` + timetable_list[dt.getDay()] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">понедельник:</p>` + timetable_list[0] + `</div>` + `</div>` }
+                    }else if (dt.getDay() != 0 || dt.getDay() != 1 || dt.getDay() != 5 || dt.getDay() != 6) {
+                        if (dt.getHours() < 15) { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">вчера:</p>` + timetable_list[dt.getDay() - 2] + `</div>` + `<div><p class="timetable_day">сегодня:</p>` + timetable_list[dt.getDay() - 1] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">завтра:</p>` + timetable_list[dt.getDay()] + `</div>` + `</div>` }
+                            else                { return `<div class="timetable_day"><div class="pc"><p class="timetable_day">сегодня:</p>` + timetable_list[dt.getDay() - 1] + `</div>` + `<div><p class="timetable_day">завтра:</p>` + timetable_list[dt.getDay()] + `</div>` + `<div class="pc midnone"><p class="timetable_day pc">послезавтра:</p>` + timetable_list[dt.getDay() + 1] + `</div>` + `</div>` }
+                    }
+                } else if (type == 'week') { 
+                    return `<div class="timetable_flex_container"><div class="timetable_flex_dayweek"><p class="timetable_week">понедельник:</p>` + timetable_list[0] + `</div>` +
+                    `<div class="timetable_flex_dayweek"><p class="timetable_week">вторник:</p>` + timetable_list[1] + `</div>` +
+                    `<div class="timetable_flex_dayweek"><p class="timetable_week">среда:</p>` + timetable_list[2] + `</div>` +
+                    `<div class="timetable_flex_dayweek"><p class="timetable_week">четверг:</p>` + timetable_list[3] + `</div>` +
+                    `<div class="timetable_flex_dayweek"><p class="timetable_week">пятница:</p>` + timetable_list[4] + `</div>` +
+                    `<div class="timetable_flex_dayweek"><p class="timetable_week">суббота:</p>` + timetable_list[5] + `</div></div>`
+                } else if (type == 'alerts') { return timetable_alerts }
+                else { con('warn', 'Warn: timetable function getting uncaught variables') }
+                } catch (e) { con(`error', 'ERROR: timetable function have problem (${e})`) }
+            }
+            output(false, `
+            <div class="timetable_greetings">
+                <p style="font-size:28px; margin:0px;" class="timetable_weekname_head">${timetable_name}</p>
+                <div class="timetable_button">
+                    <button class="timetable_button timetable_button_day" onclick="timetable_logic('day')">день</button>
+                    <button class="timetable_button timetable_button_alerts" onclick="timetable_logic('alerts')">звонки</button>
+                    <button class="timetable_button timetable_button_week" onclick="timetable_logic('week')">неделя</button>
+                </div>
+            </div>
+            <div class="timetable_table">
+                ${get_timetable('day')}
+                ${get_timetable('week')}
+                ${get_timetable('alerts')}
+            </div>`);
+            theme(1); timetable_logic('day')
+            settings('write', 'TimetableBuildPage', 56)
+            enableLogger()
+        </script>
+        <div class="warning">
+            <p class="warning"><b class="warning">примечание:</b> изменения расписания и дистанционка здесь не отображаются, для этого смотри беседу "КСК-11" в VK</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title id="title_page">Дополнительно | КСК-11</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Plutonny">
+        <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta name="description" content="Расписание группы КСК-11">
+        <meta name="theme-color" id="theme-color" content="#f0f0f0">
+        <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+        <script type="text/javascript"       src="../storage/solar.js"></script>
+        <script type="text/javascript"       src="../storage/luxon.js"></script>
+        
+        <script type="text/javascript"       src="../storage/debug.js"></script>
+        <script type="text/javascript"       src="../storage/frames-min.js"></script>
+        <link rel="icon"                    href="../storage/images/college.png">
+        <link rel="stylesheet" media="all"  href="../storage/main.css">
+        <link rel="manifest" href="manifest.json">
+        <style id="theme_css"></style>
+        
+        <style>
+            div.other { margin: 24px; display: flex; text-align: center; }
+            div.other_container { margin-top: 48px; display: flex; }
+            p.other_gen { margin-bottom: 12px; font-size: 22px; }
+            p.other { margin: 0px; font-size: 16px; }
+            a.other { text-decoration: underline 2px solid var(--main-text-color); }
+
+            p.other_table_gen { margin-top: 64px; text-align: center; margin-bottom: 16px; font-size: 22px; }
+            table.other_table { text-align: center; border-collapse: collapse; margin: auto; background-color: var(--timetable-bg); }
+            td.other_table { border: 1px solid var(--main-text-color); height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
+            .other_table_num { width: 15px; border: 1px solid var(--main-text-color);  font-family: 'Montserrat'; }
+        </style>
+        <noscript>
+            <div style="font-size: 32px; text-align: center;">
+                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
+                <p>Функционал сайта практически недоступен</p>
+            </div>
+        </noscript>
+    </head>
+    <body>
+        <div class="modal" id="modal"></div>
+        <script>
+            if (!BETA) { headertext = 'дополнительно' }
+            header(2, `Группа КСК-11`, `${headertext}`, `home`, false, true, true)
+        </script>
+        <div class="other_page">
+            <div class="other_table">
+                <p class="other_table_gen"><b>Рассадка:</b></p>
+                <table class="other_table">
+                    <tr class="other_table_num">
+                        <td class="other_table_num">№</td>
+                        <td class="other_table_num">1</td>
+                        <td class="other_table_num">2</td>
+                        <td class="other_table_num">3</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">1</td>
+                        <td class="other_table">Никитин<br>Павозков</td>
+                        <td class="other_table">Ивин</td>
+                        <td class="other_table">Кузнецов<br>Савинов</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">2</td>
+                        <td class="other_table">Никонов<br>Поликевич</td>
+                        <td class="other_table">Каралин<br>Адилов</td>
+                        <td class="other_table">Едемский<br>Михеева</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">3</td>
+                        <td class="other_table">Ципилев</td>
+                        <td class="other_table">Сибирцев<br>Кубышкина</td>
+                        <td class="other_table">Печинкина<br>Петров</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">4</td>
+                        <td class="other_table">Барзаногова</td>
+                        <td class="other_table">Дейнега<br>Некрасов</td>
+                        <td class="other_table">Алексеев<br>Клюкин</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">5</td>
+                        <td class="other_table">Байбородин<br>Бойко</td>
+                        <td class="other_table">Чебыкин</td>
+                        <td class="other_table"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="other">
+                <div class="other_container">
+                    <p class="other_gen"><b>Электронная почта группы:</b></p>
+                    <p class="other">Логин: csc11akt@gmail.com</p>
+                    <p class="other">Пароль: Arhangelsk!12345!akt</p>
+                </div>
+                <div class="other_container">
+                    <p class="other_gen"><b>Социальные сети для связи:</b></p>
+                    <p class="other">Глеба Сергеевича: <a class="other" target="_blank" href="https://vk.com/small_tip">ВКонтакте</a></p>
+                    <p class="other">Старосты: <a class="other" target="_blank" href="https://vk.com/pltny">ВКонтакте</a>, <a class="other" target="_blank" href="https://telegram.me/plutonny">Telegram</a></p>
+                    <!--<p class="other">Зам. старосты: <a class="other" target="_blank" href="">Пока что нету</a></p>-->
+                </div>
+            </div>
+        </div>
+        <script>theme(1); settings('write', 'OtherBuildPage', 61); enableLogger()</script>
+    </body>
+</html>

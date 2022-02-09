@@ -1,34 +1,98 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <meta                                       charset="UTF-8">
-        <meta   http-equiv="Permissions-Policy"     content="interest-cohort=()">
-        <meta   name="viewport"                     content="width=device-width, initial-scale=1.0">
-        <meta   name="author"                       content="Plutonny">
-        <meta   name="description"                  content="Главная, КСК-11">
-        <meta   name="theme-color" id="theme-color" content="#202020">
+        <title id="title_page">Главная | КСК-11</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Plutonny">
+        <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta name="description" content="Главная страница группы КСК-11 АКТ(ф)СПбГУТ">
+        <meta name="theme-color" id="theme-color" content="#f0f0f0">
+        <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+        <script type="text/javascript"       src="../storage/solar.js"></script>
+        <script type="text/javascript"       src="../storage/luxon.js"></script>
 
-        <title  id="csc11-title-of-page"            >Перенаправление...</title>
-
-        <link   rel="manifest"                      href="/college-beta/manifest.json">
-
-        <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
-        <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
-        
-        <script type="text/javascript"              src="/assets/beta/preload.js"></script>
-
-        <script>window.location.assign(`/college${betaRepos}/`)</script>
+        <script type="text/javascript"       src="../storage/debug.js"></script>
+        <script type="text/javascript"       src="../storage/frames-min.js"></script>
+        <link rel="icon"                    href="../storage/images/college.png">
+        <link rel="stylesheet" media="all"  href="../storage/main.css">
+        <link rel="manifest" href="manifest.json">
+        <style id="theme_css"></style>
 
         <noscript>
-            <style>
-                html, body { background-color: #202020; }
-                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
-                div        { margin-top: 64px; }
-            </style>
-            <div>
+            <div style="font-size: 32px; text-align: center;">
                 <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
+                <p>Функционал сайта практически недоступен</p>
             </div>
         </noscript>
     </head>
+    <body>
+        <div class="modal" id="modal"></div>
+        <script>
+            if (!BETA) { headertext = 'главная' }
+            header(2, `Группа КСК-11`, `${headertext}`, `home`, true, false, false);
+            var un = '', c = settings('get', 'username'); if (!(c == null || c == '')) { un += `, <br class="mobile">${settings('get', 'username')}` }
+            var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+            var ot;
+                 if (dt.getHours() >= 5  && dt.getHours() < 12) { ot = `Доброе утро` } 
+            else if (dt.getHours() >= 12 && dt.getHours() < 17) { ot = `Добрый день` } 
+            else if (dt.getHours() >= 17 && dt.getHours() < 22) { ot = `Добрый вечер`} 
+            else                                                { ot = `Доброй ночи` }
+            output(false,`
+            <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${ot}${un}!</p></div>
+            <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${weekname} неделя</p></div>
+            `)
+        </script>
+        <div class="support_table">
+            <div class="margin24">
+                <a class="support_button" href="timetable.html">
+                    <div class="support_button">
+                        <div class="emcalendarpad emoji mobile"></div><p class="support_button mobile"> расписание</p>
+                        <p class="support_button pc">Расписание</p>
+                        <div class="margin52"><img class="support_button pc" src="" id="timetable_support"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="margin24">
+                <a class="support_button" href="https://docs.google.com/spreadsheets/d/1YTAVI4M-wtcZwLkHmrXL8-Ju7rspgo2troDe5apwXAg/edit" target="_blank">
+                    <div class="support_button">
+                        <div class="emdouble emoji mobile"></div><p class="support_button mobile"> долги и итоговые</p>
+                        <p class="support_button pc">Итоговые</p>
+                        <div class="margin52"><img class="support_button pc" src="" id="gdoltable_support"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="margin24">
+                <a class="support_button" href="https://docs.google.com/spreadsheets/d/1-1Smcrzwt46EUvihLGw2lGhRb3G2w8i7I1MV5BKN7TI/edit" target="_blank">
+                    <div class="support_button">
+                        <div class="emscroll emoji mobile"></div><p class="support_button mobile"> оценки</p>
+                        <p class="support_button pc">Оценки</p>
+                        <div class="margin52"><img class="support_button pc" src="" id="gnumstable_support"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="margin24">
+                <a class="support_button" href="https://docs.google.com/spreadsheets/d/12NHcO3C-BL2vZ5B64_2nW4RoH-zKdDL4Ixj2MkmWiag/edit" target="_blank">
+                    <div class="support_button">
+                        <div class="emclipboard emoji mobile"></div><p class="support_button mobile"> посещаемость</p>
+                        <p class="support_button pc">Посещаемость</p>
+                        <div class="margin52"><img class="support_button pc" src="" id="gtable_support"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="margin24">
+                <a class="support_button" href="other.html">
+                    <div class="support_button">
+                        <div class="emballoon emoji mobile"></div><p class="support_button mobile"> дополнительно</p>
+                        <p class="support_button pc">Дополнительно</p>
+                        <div class="margin52"><img class="support_button pc" src="" id="other_support"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <script>
+            theme(1); settings('write', 'HomeBuildPage', 67); enableLogger();
+            activities('beta')
+        </script>
+    </body>
 </html>
