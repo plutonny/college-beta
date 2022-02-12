@@ -20,7 +20,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
 
-        <script> var thisPageBuild = 18; </script>
+        <script> var thisPageBuild = 19; </script>
         
         <style  id="root-colors-theme"></style>
         
@@ -114,12 +114,24 @@
                 <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                     <div style="display: flex; align-items: center;">
                         <input type="radio" id="acbgcolor1" name="acbgcolor" ${deviceStorage.get('acbgcolor') == 'default' ? 'checked' : ''} onchange="deviceStorage.write('acbgcolor', 'default')" style="margin: 0px 12px 0px 6px;">
-                        <label for="acbgcolor1">стандартнй</label>
+                        <label for="acbgcolor1">стандартный</label>
                     </div>
                     <div style="height: 6px;"></div>
                     <div style="display: flex; align-items: center;">
                         <input type="radio" id="acbgcolor2" name="acbgcolor" ${deviceStorage.get('acbgcolor') == 'weekcolor' ? 'checked' : ''} onchange="deviceStorage.write('acbgcolor', 'weekcolor')" style="margin: 0px 12px 0px 6px;">
                         <label for="acbgcolor2">цвет недели</label>
+                    </div>
+                </div>
+                <p>Вид панели навигации:</p>
+                <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
+                    <div style="display: flex; align-items: center;">
+                        <input type="radio" id="worknavbar1" name="worknavbar" ${deviceStorage.get('worknavbar') == 'default' ? 'checked' : ''} onchange="deviceStorage.write('worknavbar', 'default'); frames.navbar('other')" style="margin: 0px 12px 0px 6px;">
+                        <label for="worknavbar1">стандартный</label>
+                    </div>
+                    <div style="height: 6px;"></div>
+                    <div style="display: flex; align-items: center;">
+                        <input type="radio" id="worknavbar2" name="worknavbar" ${deviceStorage.get('worknavbar') == 'float' ? 'checked' : ''} onchange="deviceStorage.write('worknavbar', 'float'); frames.navbar('other')" style="margin: 0px 12px 0px 6px;">
+                        <label for="worknavbar2">плавающий</label>
                     </div>
                 </div>
             </div>
