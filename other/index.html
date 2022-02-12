@@ -49,7 +49,7 @@
         
         <script>
             if (REQUEST.p == 'seating') {
-                frames.header(`Рассадка`, false, true)
+                frames.header(`Рассадка`, [false, true], false)
                 page.output('csc11-title-of-page', 'Рассадка, КСК-11')
                 page.output('content', `
                     <style>
@@ -99,7 +99,7 @@
                 `)
             }
             else {
-                frames.header(`Другое`, true, false)
+                frames.header(`Другое`, [true, false], false)
                 page.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }

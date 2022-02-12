@@ -53,7 +53,7 @@
                 var inj = ''
                 page.output('csc11-title-of-page', 'Расписание, КСК-11')
                 if (REQUEST.timetable == 'week') {
-                    frames.header(`Расписание на неделю`, false, true)
+                    frames.header(`Расписание на неделю`, [false, true], true)
                     page.output('greeting', `
                     <style>
                         .content { padding: 12px 24px 73px 24px !important; background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; min-height: calc(100vh - 88px); }
@@ -75,7 +75,7 @@
                     </div>
                     `
                 } else if (REQUEST.timetable == 'alerts') {
-                    frames.header(`Расписание звонков`, false, true)
+                    frames.header(`Расписание звонков`, [false, true], false)
                     inj += `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
@@ -106,7 +106,7 @@
                     else if (CURRDATE.getHours() >= 12 && CURRDATE.getHours() < 17) { headerGretings += `Добрый день` } 
                     else if (CURRDATE.getHours() >= 17 && CURRDATE.getHours() < 22) { headerGretings += `Добрый вечер`} 
                     else                                                            { headerGretings += `Доброй ночи` }
-                    frames.header(`${headerGretings}${headerUsername}!`, true, false);
+                    frames.header(`${headerGretings}${headerUsername}!`, [true, false], true);
                 } catch (e) { page.error(`Error: home page (${e})`) }
 
                 try {
