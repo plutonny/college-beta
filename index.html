@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta                                       charset="UTF-8">
+        <meta   http-equiv="Permissions-Policy"     content="interest-cohort=()">
+        <meta   name="viewport"                     content="width=device-width, initial-scale=1.0">
+        <meta   name="author"                       content="Plutonny">
+        <meta   name="keywords"                     content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta   name="description"                  content="Главная, КСК-11">
+        <meta   name="theme-color" id="theme-color" content="#202020">
+
+        <title  id="csc11-title-of-page"            >Главная, КСК-11</title>
+        <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
+        <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
+        <script type="text/javascript"              src="/assets/solar.js"></script>
+        <script type="text/javascript"              src="/assets/luxon.js"></script>
+        <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
+        
+        <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
+        <link   rel="manifest"                      href="/college-beta/manifest.json">
+        <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
+        
+        <script> var thisPageBuild = 79; </script>
+        
+        <style  id="root-colors-theme"></style>
+        
+        <script type="text/javascript"              src="/assets/beta/preload.js"></script>
+        <script type="text/javascript"              src="/assets/beta/frames.js"></script>
+        <script type="text/javascript"              src="/assets/beta/main.js"></script>
+        <script type="text/javascript"              src="/assets/beta/timetable.js"></script>
+
+        <noscript>
+            <style>
+                html, body { background-color: #202020; }
+                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
+                div        { margin-top: 64px; }
+            </style>
+            <div>
+                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
+                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
+            </div>
+        </noscript>
+    </head>
+    <body>
+        <div class="modal" id="modal"></div>
+        <div class="header" id="header"></div>
+        <div class="navbar" id="navbar"><script>frames.navbar('home')</script></div>
+        <div class="greeting" id="greeting"></div>
+        <div class="content" id="content"></div>
+        
+        <script>
+            if (REQUEST.timetable != undefined) {
+                var inj = ''
+                page.output('csc11-title-of-page', 'Расписание, КСК-11')
+                if (REQUEST.timetable == 'week') {
+                    frames.header(`Расписание на неделю`, false, true)
+                    page.output('greeting', `
+                    <style>
+                        .content { padding: 12px 24px 73px 24px !important; background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; min-height: calc(100vh - 88px); }
+                        .greeting { margin-bottom: 8px; width: 100%; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-evenly; }
+                    </style>
+                    <style id="timetableCSS"></style>
+                    <button class="timetableWorkButton1" style="font-family: 'Montserrat'; width: 11%; height: 56px; border: none; border-radius: 16px;" onclick="TIMETABLE.pair.weekChanger(1)">ПН</button>
+                    <button class="timetableWorkButton2" style="font-family: 'Montserrat'; width: 11%; height: 56px; border: none; border-radius: 16px;" onclick="TIMETABLE.pair.weekChanger(2)">ВТ</button>
+                    <button class="timetableWorkButton3" style="font-family: 'Montserrat'; width: 11%; height: 56px; border: none; border-radius: 16px;" onclick="TIMETABLE.pair.weekChanger(3)">СР</button>
+                    <button class="timetableWorkButton4" style="font-family: 'Montserrat'; width: 11%; height: 56px; border: none; border-radius: 16px;" onclick="TIMETABLE.pair.weekChanger(4)">ЧТ</button>
+                    <button class="timetableWorkButton5" style="font-family: 'Montserrat'; width: 11%; height: 56px; border: none; border-radius: 16px;" onclick="TIMETABLE.pair.weekChanger(5)">ПТ</button>
+                    <button class="timetableWorkButton6" style="font-family: 'Montserrat'; width: 11%; height: 56px; border: none; border-radius: 16px;" onclick="TIMETABLE.pair.weekChanger(6)">СБ</button>
+                    `)
+                    inj += `
+                    <h2 id="timetableWeekName" style="margin-top: 12px;"></h2>
+                    ${TIMETABLE.pair.get.HTML.week()}
+                    <div style="display: flex; justify-content: center;">
+                        <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 16px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=alerts')">Расписание звонков</button>
+                    </div>
+                    `
+                } else if (REQUEST.timetable == 'alerts') {
+                    frames.header(`Расписание звонков`, false, true)
+                    inj += `
+                    <style>
+                        .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+                    </style>
+                    <div>
+                        <p style="text-align: center;"><b>1-я пара:</b> 8:30-9:15, 9:20-10:05</p>
+                        <p style="text-align: center;"><b>2-я пара:</b> 10:15-11:00, 11:05-11:50</p>
+                        <p style="text-align: center;"><b>большой перерыв:</b> 11:50-12:35</p>
+                        <p style="text-align: center;"><b>3-я пара:</b> 12:35-13:20, 13:25-14:10</p>
+                        <p style="text-align: center;"><b>4-я пара:</b> 14:20-15:05, 15:10-15:55</p>
+                        <p style="text-align: center;"><b>5-я пара:</b> 16:05-16:50, 16:55-17:40</p>
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 16px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Расписание на неделю</button>
+                    </div>`
+                } else {
+                    page.critical('Error: timetable page cant find current response')
+                }
+
+                page.output('content', inj)
+                if (REQUEST.timetable == 'week') { TIMETABLE.pair.weekChanger(CURRDATE.getDay()) }
+            } else {
+                try {
+                    var headerUsername = '', headerGretings = '';
+                    var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+                         if (!deviceStorage.check('username'))                      { headerUsername += `, ${deviceStorage.get('username')}` }
+                         if (CURRDATE.getHours() >= 5  && CURRDATE.getHours() < 12) { headerGretings += `Доброе утро` } 
+                    else if (CURRDATE.getHours() >= 12 && CURRDATE.getHours() < 17) { headerGretings += `Добрый день` } 
+                    else if (CURRDATE.getHours() >= 17 && CURRDATE.getHours() < 22) { headerGretings += `Добрый вечер`} 
+                    else                                                            { headerGretings += `Доброй ночи` }
+                    frames.header(`${headerGretings}${headerUsername}!`, true, false);
+                } catch (e) { page.error(`Error: home page (${e})`) }
+
+                try {
+                    var greetingFirst = '', greetingSecond = ''
+                    if (CURRDATE.getDay() == 0) { greetingFirst = 'Сегодня пар нет' } 
+                    else                        { greetingFirst = TIMETABLE.pair.get.current() }
+                    greetingSecond = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}, ${CURRDATE.getDay() == 0 ? `с пон-ка ${WEEK.name.alt.RU}` : WEEK.name.RU} неделя`
+                    page.output('greeting', `
+                        <style>
+                            .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
+                        </style>
+                        <a style="font-size:28px; margin:0px; text-decoration: none;" href="/college${betaRepos}/?timetable=alerts">${greetingFirst}</a>
+                        <p style="font-size:16px; margin:0px;">${greetingSecond}</p>
+                    `)
+                } catch (e) { page.error(`Error: home page greeting (${e})`) }
+
+                try {
+                    var pairTitle = '', pairWeekNum = 0;
+                         if (CURRDATE.getDay() == 0)                              { pairTitle = 'Пары завтра:'; pairWeekNum = 1 }
+                    else if (CURRDATE.getDay() == 6) {
+                          if (TIMETABLE.pair.get.current() == 'Пары закончились') { pairTitle = 'Пары в понедельник:'; pairWeekNum = 1 }
+                        else                                                      { pairTitle = 'Пары сегодня:'; pairWeekNum = 6 }
+                    } else {
+                          if (TIMETABLE.pair.get.current() == 'Пары закончились') { pairTitle = 'Пары завтра:'; pairWeekNum = CURRDATE.getDay() + 1 }
+                        else                                                      { pairTitle = 'Пары сегодня:'; pairWeekNum = CURRDATE.getDay() }
+                    }
+                } catch (e) { page.error(`Error: home page content (${e})`) }
+
+                page.output('content', `
+                    <style>
+                        .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
+                    </style>
+                    <p style="margin: 0px 0px 24px 0px; font-size: 22px;">${pairTitle}</p>
+
+                    ${TIMETABLE.pair.get.HTML.day(TIMETABLE.pair.get.listOfDay([pairWeekNum, CURRDATE.getDay() == 0 ? WEEK.name.alt.EN : WEEK.name.EN]))}
+
+                    <div style="display: flex; justify-content: center;">
+                        <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Все пары</button>
+                    </div>
+                `)
+            }
+        </script>
+
+        <script>
+            deviceStorage.write('homeBuildPage', thisPageBuild)
+        </script>
+    </body>
+</html>
