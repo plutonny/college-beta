@@ -20,7 +20,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
 
-        <script> var thisPageBuild = 17; </script>
+        <script> var thisPageBuild = 18; </script>
         
         <style  id="root-colors-theme"></style>
         
@@ -109,6 +109,18 @@
                         <label for="tytheme3">по времени: ${tytheme3('get')}</label>
                     </div>
                     -->`+*/`
+                </div>
+                <p>Градиент фона страницы:</p>
+                <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
+                    <div style="display: flex; align-items: center;">
+                        <input type="radio" id="acbgcolor1" name="acbgcolor" ${deviceStorage.get('acbgcolor') == 'default' ? 'checked' : ''} onchange="deviceStorage.write('acbgcolor', 'default')" style="margin: 0px 12px 0px 6px;">
+                        <label for="acbgcolor1">стандартнй</label>
+                    </div>
+                    <div style="height: 6px;"></div>
+                    <div style="display: flex; align-items: center;">
+                        <input type="radio" id="acbgcolor2" name="acbgcolor" ${deviceStorage.get('acbgcolor') == 'weekcolor' ? 'checked' : ''} onchange="deviceStorage.write('acbgcolor', 'weekcolor')" style="margin: 0px 12px 0px 6px;">
+                        <label for="acbgcolor2">цвет недели</label>
+                    </div>
                 </div>
             </div>
             `)
