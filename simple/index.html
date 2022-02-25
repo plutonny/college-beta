@@ -14,18 +14,21 @@
         <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
         <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
         <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script type="text/javascript"              src="/assets/solar.js"></script>
+        <script type="text/javascript"              src="/assets/luxon.js"></script>
         
         <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
-
+        
+        <script> var thisPageBuild = 1; </script>
+        
+        <style  id="root-colors-theme"></style>
+        
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
-
-        <script> var thisPageBuild = 1; </script>
-
-        <style  id="root-colors-theme"></style>
+        <script type="text/javascript"              src="/assets/beta/timetable.js"></script>
 
         <noscript>
             <style>
@@ -40,7 +43,132 @@
         </noscript>
     </head>
     <body>
-        <div class="header" id="header"></div>
+        <style>
+            .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+        </style>
+        <div class="modal" id="modal"></div>
+        <div class="header" id="header"><script>frames.header('Упрощенная страница', [true, true], false)</script></div>
+        <div class="content" id="content">
+            <h1 id="weekclor"><script>page.output('weekclor', `${CURRDATE.getDay() == 0 ? `С пон-ка ${WEEK.name.alt.RU} неделя` : `Текущая неделя: ${WEEK.name.RU}`}`)</script></h1>
+            <h2>Расписание на неделю:</h2>
+            <div id="timetable">
+                <script>
+                    weekNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+                    var result = `
+                    <style>
+                        td.timetableTableWeek { border: 2px solid #707070; height: 32px; padding: 0px 2px; font-family: 'Montserrat'; }
+                    </style>
+                    `
+                    for (var i = 1; i <= 6; i++) {
+                        result += `<h3>${weekNames[i]}:</h3>`
+                        result += `<table class="timetableWork${i}" style="width: 330px; text-align: center; border-collapse: collapse; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">`
+                        for (var j = 0; j < TIMETABLE[i].length; j++) {
+                            var inj = TIMETABLE[i][j][4] == 'default' ? `--root-navbar-bg-color` : `--week-${TIMETABLE[i][j][4]}`
+                            if (TIMETABLE[i][j][4] == 'default') {
+                                result += `
+                                <tr style="background-color: var(${inj});">
+                                    <td rowspan="2" style="width: 16px; border: 2px solid #707070;"><b>${TIMETABLE[i][j][0]}</b></td>
+                                    <td style="width: 220px;" class="timetableTableWeek"><b style="font-family: 'Montserrat';">
+                                        ${TIMETABLE[i][j][1]}
+                                    </b></td>
+                                    <td class="timetableTableWeek">
+                                        ${TIMETABLE[i][j][3]}
+                                    </td>
+                                </tr>
+                                <tr style="background-color: var(${inj});">
+                                    <!-- Here <td> of num of pair -->
+                                    <td style="width: 220px;" class="timetableTableWeek">
+                                        ${TIMETABLE[i][j][2]}
+                                    </td>
+                                    <td class="timetableTableWeek"></td>
+                                </tr>
+                                `
+                            } else {
+                                result += `
+                                <tr style="background-color: var(--week-${TIMETABLE[i][j][4]});">
+                                    <td rowspan="2" style=" background-color: var(--root-navbar-bg-color); width: 16px; border: 2px solid #707070;"><b>${TIMETABLE[i][j][0]}</b></td>
+                                    <td style="width: 220px;" class="timetableTableWeek"><b style="font-family: 'Montserrat';">
+                                        ${TIMETABLE[i][j][1]}
+                                    </b></td>
+                                    <td class="timetableTableWeek">
+                                        ${TIMETABLE[i][j][3]}
+                                    </td>
+                                </tr>
+                                <tr style="background-color: var(--week-${TIMETABLE[i][j + 1][4]});">
+                                    <!-- Here <td> of num of pair -->
+                                    <td style="width: 220px;" class="timetableTableWeek"><b style="font-family: 'Montserrat';">
+                                        ${TIMETABLE[i][j + 1][1]}
+                                    </b></td>
+                                    <td class="timetableTableWeek">
+                                        ${TIMETABLE[i][j + 1][3]}
+                                    </td>
+                                </tr>
+                                `
+                                j++
+                            }
+                        }
+                        result += `</table>`
+                    }
+                    page.output('timetable', result)
+                </script>
+            </div>
+
+            <h2>Таблицы:</h2>
+            <div style="display: flex; justify-content: center;">
+                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`https://docs.google.com/spreadsheets/d/e/2PACX-1vSc0wJbt-ppYMnjQch7ZvlUZSVjhT54n9i98Rve7E7NEtNhAS6qFulo81MSQ80jn-0YjPMUTsx6NMKP/pubhtml?widget=true&amp;headers=true`)">Оценки 2 семестр 2021/22</button>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`https://docs.google.com/spreadsheets/d/e/2PACX-1vRBg9EuNAdXmNJaVIhfmC1sfUEO_2H8BKjzaEnHkNoX6ageg1JFSpxeERSTjw0tJQ0p8k71gzrRUsOz/pubhtml?widget=true&amp;headers=true`)">Посещаемость 2021/22</button>
+            </div>
+
+            <h2>Рассадка:</h2>
+            <style>
+                td.seatingTableTD { border: 2px solid #707070; height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
+                .seatingTableNUM { width: 15px; border: 2px solid #707070;  font-family: 'Montserrat'; }
+            </style>
+            <table style="text-align: center; border-collapse: collapse; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">
+                <tr class="seatingTableNUM">
+                    <td class="seatingTableNUM"></td>
+                    <td class="seatingTableNUM">1</td>
+                    <td class="seatingTableNUM">2</td>
+                    <td class="seatingTableNUM">3</td>
+                </tr>
+                <tr>
+                    <td class="seatingTableTD">1</td>
+                    <td class="seatingTableTD">Никитин<br>Павозков</td>
+                    <td class="seatingTableTD">Ивин</td>
+                    <td class="seatingTableTD">Кузнецов<br>Савинов</td>
+                </tr>
+                <tr>
+                    <td class="seatingTableTD">2</td>
+                    <td class="seatingTableTD">Никонов<br>Поликевич</td>
+                    <td class="seatingTableTD">Каралин<br>Адилов</td>
+                    <td class="seatingTableTD">Едемский<br>Михеева</td>
+                </tr>
+                <tr>
+                    <td class="seatingTableTD">3</td>
+                    <td class="seatingTableTD">Ципилев</td>
+                    <td class="seatingTableTD">Сибирцев<br>Кубышкина</td>
+                    <td class="seatingTableTD">Печинкина<br>Петров</td>
+                </tr>
+                <tr>
+                    <td class="seatingTableTD">4</td>
+                    <td class="seatingTableTD">Барзаногова</td>
+                    <td class="seatingTableTD">Дейнега<br>Некрасов</td>
+                    <td class="seatingTableTD">Алексеев<br>Клюкин</td>
+                </tr>
+                <tr>
+                    <td class="seatingTableTD">5</td>
+                    <td class="seatingTableTD">Байбородин<br>Бойко</td>
+                    <td class="seatingTableTD">Чебыкин</td>
+                    <td class="seatingTableTD"></td>
+                </tr>
+            </table>
+
+            <div style="display: flex; justify-content: center;">
+                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/')">Вернуться на главную</button>
+            </div>
+        </div>
         
         <script>
             localStorage.setItem('simpleBuildPage', thisPageBuild)
