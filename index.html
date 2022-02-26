@@ -20,7 +20,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 79; </script>
+        <script> var thisPageBuild = 80; </script>
         
         <style  id="root-colors-theme"></style>
         
@@ -79,15 +79,70 @@
                     inj += `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+                        td.alertsTableTD { border: 1px solid #707070; height: 43px; padding: 0px 8px; font-family: 'Montserrat'; }
+                        td.alertsTableTDF { border: 1px solid #707070; height: 43px; padding: 0px 8px; font-family: 'Montserrat'; width: 24px; }
+                        table { width: 256px; }
                     </style>
-                    <div>
-                        <p style="text-align: center;"><b>1-я пара:</b> 8:30-9:15, 9:20-10:05</p>
-                        <p style="text-align: center;"><b>2-я пара:</b> 10:15-11:00, 11:05-11:50</p>
-                        <p style="text-align: center;"><b>большой перерыв:</b> 11:50-12:35</p>
-                        <p style="text-align: center;"><b>3-я пара:</b> 12:35-13:20, 13:25-14:10</p>
-                        <p style="text-align: center;"><b>4-я пара:</b> 14:20-15:05, 15:10-15:55</p>
-                        <p style="text-align: center;"><b>5-я пара:</b> 16:05-16:50, 16:55-17:40</p>
-                    </div>
+                        
+                    <h2 style="text-align: left; margin: 0 0 12px 0;">Стандартное расписание:</h2>
+                    <table style="border: 1px solid #707070; border-radius: 18px; text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">
+                        <tr class="btl btr">
+                            <td class="alertsTableTDF btl">1</td>
+                            <td class="alertsTableTD">8:30-9:15</td>
+                            <td class="alertsTableTD btr">9:20-10:05</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">2</td>
+                            <td class="alertsTableTD">10:15-11:00</td>
+                            <td class="alertsTableTD">11:05-11:50</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">БП</td>
+                            <td class="alertsTableTD" colspan="2">11:50-12:35</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">3</td>
+                            <td class="alertsTableTD">12:35-13:20</td>
+                            <td class="alertsTableTD">13:25-14:10</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">4</td>
+                            <td class="alertsTableTD">14:20-15:05</td>
+                            <td class="alertsTableTD">15:10-15:55</td>
+                        </tr>
+                        <tr class="bbl bbr">
+                            <td class="alertsTableTDF bbl">5</td>
+                            <td class="alertsTableTD">16:05-16:50</td>
+                            <td class="alertsTableTD bbr">16:55-17:40</td>
+                        </tr>
+                    </table>
+                    <h2 style="text-align: left; margin: 12px 0;">Праздничное расписание:</h2>
+                    <table style="border: 1px solid #707070; border-radius: 18px; text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">
+                        <tr class="btl btr">
+                            <td class="alertsTableTDF btl">1</td>
+                            <td class="alertsTableTD btr">8:30-9:45</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">2</td>
+                            <td class="alertsTableTD">9:55-11:10</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">БП</td>
+                            <td class="alertsTableTD">11:10-11:40</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">3</td>
+                            <td class="alertsTableTD">11:40-12:25</td>
+                        </tr>
+                        <tr>
+                            <td class="alertsTableTDF">4</td>
+                            <td class="alertsTableTD">13:05-14:20</td>
+                        </tr>
+                        <tr class="bbl bbr">
+                            <td class="alertsTableTDF bbl">5</td>
+                            <td class="alertsTableTD bbr">14:30-15:45</td>
+                        </tr>
+                    </table>
                     <div style="display: flex; justify-content: center;">
                         <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 16px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Расписание на неделю</button>
                     </div>`

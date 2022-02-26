@@ -21,7 +21,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 1; </script>
+        <script> var thisPageBuild = 2; </script>
         
         <style  id="root-colors-theme"></style>
         
@@ -43,17 +43,25 @@
         </noscript>
     </head>
     <body>
+        <script>
+            var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+            var weekNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+        </script>
         <style>
             .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+            .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
         </style>
+        
         <div class="modal" id="modal"></div>
-        <div class="header" id="header"><script>frames.header('Упрощенная страница', [true, true], false)</script></div>
+        <div class="header" id="header"><script>frames.header('Упрощенная страница', [true, true], true)</script></div>
+        <div class="greeting" id="greeting">
+            <p id="weekcolor" style="font-size:28px; margin:0px;"><script>document.getElementById('weekcolor').innerHTML = `${CURRDATE.getDay() == 0 ? `С пон-ка ${WEEK.name.alt.RU} неделя` : `Текущая неделя: ${WEEK.name.RU}`}`</script></p>
+            <p id="dtme" style="font-size:16px; margin:0px;"><script>document.getElementById('dtme').innerHTML = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}`</script></p>
+        </div>
         <div class="content" id="content">
-            <h1 id="weekclor"><script>page.output('weekclor', `${CURRDATE.getDay() == 0 ? `С пон-ка ${WEEK.name.alt.RU} неделя` : `Текущая неделя: ${WEEK.name.RU}`}`)</script></h1>
-            <h2>Расписание на неделю:</h2>
+            <h2 style="margin: 0;">Расписание на неделю:</h2>
             <div id="timetable">
                 <script>
-                    weekNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
                     var result = `
                     <style>
                         td.timetableTableWeek { border: 2px solid #707070; height: 32px; padding: 0px 2px; font-family: 'Montserrat'; }
@@ -109,16 +117,16 @@
                         }
                         result += `</table>`
                     }
-                    page.output('timetable', result)
+                    document.getElementById('timetable').innerHTML = result
                 </script>
             </div>
 
             <h2>Таблицы:</h2>
             <div style="display: flex; justify-content: center;">
-                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`https://docs.google.com/spreadsheets/d/e/2PACX-1vSc0wJbt-ppYMnjQch7ZvlUZSVjhT54n9i98Rve7E7NEtNhAS6qFulo81MSQ80jn-0YjPMUTsx6NMKP/pubhtml?widget=true&amp;headers=true`)">Оценки 2 семестр 2021/22</button>
+                <button style="margin: 12px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`https://docs.google.com/spreadsheets/d/e/2PACX-1vSc0wJbt-ppYMnjQch7ZvlUZSVjhT54n9i98Rve7E7NEtNhAS6qFulo81MSQ80jn-0YjPMUTsx6NMKP/pubhtml?widget=true&amp;headers=true`)">Оценки 2 семестр 2021/22</button>
             </div>
             <div style="display: flex; justify-content: center;">
-                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`https://docs.google.com/spreadsheets/d/e/2PACX-1vRBg9EuNAdXmNJaVIhfmC1sfUEO_2H8BKjzaEnHkNoX6ageg1JFSpxeERSTjw0tJQ0p8k71gzrRUsOz/pubhtml?widget=true&amp;headers=true`)">Посещаемость 2021/22</button>
+                <button style="margin: 12px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`https://docs.google.com/spreadsheets/d/e/2PACX-1vRBg9EuNAdXmNJaVIhfmC1sfUEO_2H8BKjzaEnHkNoX6ageg1JFSpxeERSTjw0tJQ0p8k71gzrRUsOz/pubhtml?widget=true&amp;headers=true`)">Посещаемость 2021/22</button>
             </div>
 
             <h2>Рассадка:</h2>

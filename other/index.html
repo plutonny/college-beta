@@ -21,7 +21,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 69; </script>
+        <script> var thisPageBuild = 70; </script>
         
         <style  id="root-colors-theme"></style>
 
@@ -98,7 +98,20 @@
                     </table>
                 `)
             }
-            else {
+            else if (REQUEST.p == 'groupemail') {
+                frames.header(`Почта группы`, [false, true], false)
+                page.output('csc11-title-of-page', 'Почта группы, КСК-11')
+                page.output('content', `
+                <style>
+                    .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+                </style>
+
+                <h2 style="margin: 0">Логин (email):</h2>
+                <h3 style="text-align: center">csc11akt@gmail.com</h3>
+                <h2 style="margin: 0">Пароль:</h2>
+                <h3 style="text-align: center">Arhangelsk!12345!akt</h3>
+                `)
+            } else {
                 frames.header(`Другое`, [true, false], false)
                 page.output('content', `
                     <style>
@@ -112,6 +125,9 @@
 
                     <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('https://discord.gg/vS5X5NdEKP')">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.discord}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Дискорд</p></div>
+                    </button>
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/other/?p=groupemail')">
+                        <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.email}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Почта группы</p></div>
                     </button>
 
                     <div style="height: 8px;"></div>
