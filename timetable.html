@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title id="title_page">Расписание, КСК-11</title>
+        <title id="title_page">Расписание | КСК-11</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Plutonny">
         <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
-        <meta name="description" content="Расписание, КСК-11">
+        <meta name="description" content="Дополнительная информация группы КСК-11">
         <meta name="theme-color" id="theme-color" content="#f0f0f0">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
-        <script type="text/javascript"       src="/assets/solar.js"></script>
-        <script type="text/javascript"       src="/assets/luxon.js"></script>
+        <script type="text/javascript"       src="../storage/solar.js"></script>
+        <script type="text/javascript"       src="../storage/luxon.js"></script>
 
-        <script type="text/javascript"       src="/assets/beta/PC/debug.js"></script>
-        <script type="text/javascript"       src="/assets/beta/PC/frames.js"></script>
-        <link rel="icon"                    href="/assets/beta/PC/images/college.png">
-        <link rel="stylesheet" media="all"  href="/assets/beta/PC/main.css">
+        <script type="text/javascript"       src="../storage/debug.js"></script>
+        <script type="text/javascript"       src="../storage/frames-min.js"></script>
+        <link rel="icon"                    href="../storage/images/college.png">
+        <link rel="stylesheet" media="all"  href="../storage/main.css">
+        <link rel="manifest" href="manifest.json">
         <style id="theme_css"></style>
         <style id="timetable_special_css"></style>
 
@@ -51,7 +52,8 @@
         <div class="modal" id="modal"></div>
         <script>
             var ndt = new Date(), dec31 = new Date(2021, 11, 31)
-            header('расписание', false, true, false);
+            if (!BETA) { headertext = 'расписание' }
+            header(2, `Группа КСК-11`, `${headertext}`, `home`, false, true, false);
             var weeknameab = ''; if (weekname == 'зеленая') { weeknameab += 'желтая' } else if (weekname == 'желтая') { weeknameab += 'зеленая' }
             var timetable_name = ''; if ((dt.getDay() == 0) || (dt.getDay() == 6 && dt.getHours() > 14)) { timetable_name += `${weekname} неделя, <br class="mobile">следующая ${weeknameab}` } else (timetable_name += `${weekname} неделя`)
             /**
@@ -238,6 +240,8 @@
                 ${get_timetable('alerts')}
             </div>`);
             theme(1); timetable_logic('day')
+            settings('write', 'TimetableBuildPage', 56)
+            enableLogger()
         </script>
         <div class="warning">
             <p class="warning"><b class="warning">примечание:</b> изменения расписания и дистанционка здесь не отображаются, для этого смотри беседу "КСК-11" в VK</p>
