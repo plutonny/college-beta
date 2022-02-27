@@ -142,7 +142,7 @@
             
             /* 1 - theme button (or none); 2 - sunrise/sunset; 3 - custom time */
             function settingsChangeType(type) { 
-                deviceStorage.write('themeType', `${type}`)
+                deviceStorage.write('themeType', type)
                 if (type == 1) { 
                     deviceStorage.write('themeEnableThemeButton', `true`); themeCheckboxBox.setAttribute('checked', 'checked')
                     frames.header(`Настройки`, [true, true], false)
