@@ -89,7 +89,7 @@
             </div>
 
             <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                <p>Работа смены темы:</p>
+                <p style="margin-bottom: 8px;">Работа смены темы:</p>
                 <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                     <div style="display: flex; align-items: center;">
                         <input type="radio" id="tytheme1" name="tytheme" ${deviceStorage.get('themeType') == 1 ? 'checked' : ''} onchange="settingsChangeType(1)" style="margin: 0px 12px 0px 6px;" value="theme">
@@ -110,7 +110,7 @@
                     </div>
                     -->`+*/`
                 </div>
-                <p>Градиент фона страницы:</p>
+                <p style="margin-bottom: 8px;">Градиент фона страницы:</p>
                 <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                     <div style="display: flex; align-items: center;">
                         <input type="radio" id="acbgcolor1" name="acbgcolor" ${deviceStorage.get('acbgcolor') == 'default' ? 'checked' : ''} onchange="deviceStorage.write('acbgcolor', 'default')" style="margin: 0px 12px 0px 6px;">
@@ -122,7 +122,7 @@
                         <label for="acbgcolor2">цвет недели</label>
                     </div>
                 </div>
-                <p>Вид панели навигации:</p>
+                <p style="margin-bottom: 8px;">Вид панели навигации:</p>
                 <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                     <div style="display: flex; align-items: center;">
                         <input type="radio" id="worknavbar1" name="worknavbar" ${deviceStorage.get('worknavbar') == 'default' ? 'checked' : ''} onchange="deviceStorage.write('worknavbar', 'default'); frames.navbar('other')" style="margin: 0px 12px 0px 6px;">

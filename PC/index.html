@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title id="title_page">Главная | КСК-11</title>
+        <title id="title_page">Главная, КСК-11</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Plutonny">
         <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
-        <meta name="description" content="Главная страница группы КСК-11 АКТ(ф)СПбГУТ">
+        <meta name="description" content="Главная, КСК-11 АКТ(ф)СПбГУТ">
         <meta name="theme-color" id="theme-color" content="#f0f0f0">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-        <script type="text/javascript"       src="/storage/solar.js"></script>
-        <script type="text/javascript"       src="/storage/luxon.js"></script>
+        <script type="text/javascript"       src="/assets/solar.js"></script>
+        <script type="text/javascript"       src="/assets/luxon.js"></script>
 
-        <script type="text/javascript"       src="/storage/debug.js"></script>
-        <script type="text/javascript"       src="/storage/frames-min.js"></script>
-        <link rel="icon"                    href="/storage/images/college.png">
-        <link rel="stylesheet" media="all"  href="/storage/main.css">
+        <script type="text/javascript"       src="/assets/beta/PC/debug.js"></script>
+        <script type="text/javascript"       src="/assets/beta/PC/frames.js"></script>
+        <link rel="icon"                    href="/assets/beta/PC/images/college.png">
+        <link rel="stylesheet" media="all"  href="/assets/beta/PC/main.css">
         <style id="theme_css"></style>
 
         <noscript>
@@ -28,8 +28,7 @@
     <body>
         <div class="modal" id="modal"></div>
         <script>
-            if (!BETA) { headertext = 'главная' }
-            header(2, `Группа КСК-11`, `${headertext}`, `home`, true, false, false);
+            header('главная', true, false, false);
             var un = '', c = settings('get', 'username'); if (!(c == null || c == '')) { un += `, <br class="mobile">${settings('get', 'username')}` }
             var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
             var ot;
@@ -53,16 +52,7 @@
                 </a>
             </div>
             <div class="margin24">
-                <a class="support_button" href="https://docs.google.com/spreadsheets/d/1YTAVI4M-wtcZwLkHmrXL8-Ju7rspgo2troDe5apwXAg/edit" target="_blank">
-                    <div class="support_button">
-                        <div class="emdouble emoji mobile"></div><p class="support_button mobile"> долги и итоговые</p>
-                        <p class="support_button pc">Итоговые</p>
-                        <div class="margin52"><img class="support_button pc" src="" id="gdoltable_support"></div>
-                    </div>
-                </a>
-            </div>
-            <div class="margin24">
-                <a class="support_button" href="https://docs.google.com/spreadsheets/d/1-1Smcrzwt46EUvihLGw2lGhRb3G2w8i7I1MV5BKN7TI/edit" target="_blank">
+                <a class="support_button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSc0wJbt-ppYMnjQch7ZvlUZSVjhT54n9i98Rve7E7NEtNhAS6qFulo81MSQ80jn-0YjPMUTsx6NMKP/pubhtml?widget=true&amp;headers=true" target="_blank">
                     <div class="support_button">
                         <div class="emscroll emoji mobile"></div><p class="support_button mobile"> оценки</p>
                         <p class="support_button pc">Оценки</p>
@@ -71,7 +61,7 @@
                 </a>
             </div>
             <div class="margin24">
-                <a class="support_button" href="https://docs.google.com/spreadsheets/d/12NHcO3C-BL2vZ5B64_2nW4RoH-zKdDL4Ixj2MkmWiag/edit" target="_blank">
+                <a class="support_button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRBg9EuNAdXmNJaVIhfmC1sfUEO_2H8BKjzaEnHkNoX6ageg1JFSpxeERSTjw0tJQ0p8k71gzrRUsOz/pubhtml?widget=true&amp;headers=true" target="_blank">
                     <div class="support_button">
                         <div class="emclipboard emoji mobile"></div><p class="support_button mobile"> посещаемость</p>
                         <p class="support_button pc">Посещаемость</p>
@@ -88,10 +78,23 @@
                     </div>
                 </a>
             </div>
+            <div class="margin24">
+                <a class="support_button" href="/college-beta/">
+                    <div class="support_button">
+                        <div class="emdouble emoji mobile"></div><p class="support_button mobile"> новая весрия</p>
+                        <p class="support_button pc">Новая версия</p>
+                        <div class="margin52">
+                            <svg style="fill: currentColor;" class="support_button pc" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="128px" viewBox="0 0 24 24" width="124px">
+                                <g><path d="M0,0h24v24H0V0z" fill="none"/></g>
+                                <g><g><path d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/></g></g>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
         <script>
-            theme(1); settings('write', 'HomeBuildPage', 67); enableLogger();
-            activities('beta')
+            theme(1)
         </script>
     </body>
 </html>
