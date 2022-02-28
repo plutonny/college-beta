@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta                                       charset="UTF-8">
+        <meta   http-equiv="Permissions-Policy"     content="interest-cohort=()">
+        <meta   name="viewport"                     content="width=device-width, initial-scale=1.0">
+        <meta   name="author"                       content="Plutonny">
+        <meta   name="keywords"                     content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta   name="description"                  content="Простая страница, КСК-11">
+        <meta   name="theme-color" id="theme-color" content="#202020">
+
+        <title  id="csc11-title-of-page"            >Простая страница, КСК-11</title>
+        
+        <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
+        <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
+
+        <link   rel="icon"                          href="csc11-favicon.png">
+        <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
+
+        <style>
+            html { margin: 24px; }
+            .yellow { background-color: var(--week-yellow) !important; }
+            .green { background-color: var(--week-green) !important; }
+            table.timetable { width: 80%; text-align: center; border-collapse: collapse; margin: auto; }
+            tr.timetable_line, tr.timetable_week_weekname, tr.timetable_week_line { height: 25px; }
+            td.timetable_num { font-family: 'Montserrat'; border: 1px solid var(--root-text-color); width: 16px; height: 48px; }
+            td.timetable_name { font-family: 'Montserrat'; border: 1px solid var(--root-text-color); width: 256px; }
+            td.timetable_cab { font-family: 'Montserrat'; border: 1px solid var(--root-text-color); width: 78px; }
+            table.other_table { text-align: center; border-collapse: collapse; margin: auto; background-color: var(--timetable-bg); }
+            td.other_table { border: 1px solid var(--root-text-color); height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
+            .other_table_num { width: 15px; border: 1px solid var(--root-text-color);  font-family: 'Montserrat'; }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>Понедельник:</h2>
+            <table class="timetable">
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name">ОБЖ</td> <td class="timetable_cab">314</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Грициенко</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">2</td>
+                    <td class="timetable_name">Физ-ра</td> <td class="timetable_cab">0100</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Топорков</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">3</td>
+                    <td class="timetable_name">Физика</td> <td class="timetable_cab">300</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Момотов</td> <td class="timetable_cab"></td>
+                </tr>
+            </table>
+            <h2>Вторник:</h2>
+            <table class="timetable">
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name yellow">Физика</td> <td class="timetable_cab yellow">300</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name green">Литература</td> <td class="timetable_cab green">404</td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">2</td>
+                    <td class="timetable_name yellow">Родная литература</td> <td class="timetable_cab yellow">413</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name green">Астрономия</td> <td class="timetable_cab green">300</td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">3</td>
+                    <td class="timetable_name">Информатика</td> <td class="timetable_cab">лр</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Цыганкова</td> <td class="timetable_cab"></td>
+                </tr>
+            </table>
+            <h2>Среда:</h2>
+            <table class="timetable">
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name">Математика</td> <td class="timetable_cab">406</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Панфилова</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">2</td>
+                    <td class="timetable_name">Литература</td> <td class="timetable_cab">404</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Горбова</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">3</td>
+                    <td class="timetable_name yellow">Англ. язык</td> <td class="timetable_cab yellow">404а/311</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name green">Физ-ра</td> <td class="timetable_cab green">0100</td>
+                </tr>
+            </table>
+            <h2>Четверг:</h2>
+            <table class="timetable">
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name">Информатика</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Цыганкова</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">2</td>
+                    <td class="timetable_name">Русский язык</td> <td class="timetable_cab">404</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Горбова</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">3</td>
+                    <td class="timetable_name">Математика</td> <td class="timetable_cab">406</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Панфилова</td> <td class="timetable_cab"></td>
+                </tr>
+            </table>
+            <h2>Пятница:</h2>
+            <table class="timetable">
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name yellow">Физика</td> <td class="timetable_cab yellow">300</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name green">Физика</td> <td class="timetable_cab green">300</td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">2</td>
+                    <td class="timetable_name">Математика</td> <td class="timetable_cab">406</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Панфилова</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name yellow">Ин. проект</td> <td class="timetable_cab yellow"></td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name green">Ин. проект (ср)</td> <td class="timetable_cab green">чит. зал</td>
+                </tr>
+            </table>
+            <h2>Суббота:</h2>
+            <table class="timetable">
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">1</td>
+                    <td class="timetable_name">Англ. язык</td> <td class="timetable_cab">404а/311</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Венедиктова/Черкасова</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">3</td>
+                    <td class="timetable_name">История</td> <td class="timetable_cab">407</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Глущенко</td> <td class="timetable_cab"></td>
+                </tr>
+                <tr class="timetable_line"><td rowspan="2" class="timetable_num">2</td>
+                    <td class="timetable_name">Химия</td> <td class="timetable_cab">402</td>
+                </tr>
+                <tr class="timetable_line">
+                    <td class="timetable_name">Петрова</td> <td class="timetable_cab"></td>
+                </tr>
+            </table>
+            <h2>Звонки:</h2>
+            <div>
+                <p><b>1-я пара:</b> 8:30-9:15, 9:20-10:05</p>
+                <p><b>2-я пара:</b> 10:15-11:00, 11:05-11:50</p>
+                <p><b>перерыв:</b> 11:50-12:35</p>
+                <p><b>3-я пара:</b> 12:35-13:20, 13:25-14:10</p>
+                <p><b>4-я пара:</b> 14:20-15:05, 15:10-15:55</p>
+                <p><b>5-я пара:</b> 16:05-16:50, 16:55-17:40</p>
+            </div>
+            <div>
+                <h2><b>Электронная почта группы:</b></h2>
+                <p>Логин: csc11akt@gmail.com</p>
+                <p>Пароль: Arhangelsk!12345!akt</p>
+            </div>
+            <h2>Рассадка:</h2>
+            <table class="other_table">
+                <tr class="other_table_num">
+                    <td class="other_table_num">№</td>
+                    <td class="other_table_num">1</td>
+                    <td class="other_table_num">2</td>
+                    <td class="other_table_num">3</td>
+                </tr>
+                <tr class="other_table">
+                    <td class="other_table">1</td>
+                    <td class="other_table">Никитин<br>Павозков</td>
+                    <td class="other_table">Ивин</td>
+                    <td class="other_table">Кузнецов<br>Савинов</td>
+                </tr>
+                <tr class="other_table">
+                    <td class="other_table">2</td>
+                    <td class="other_table">Никонов<br>Поликевич</td>
+                    <td class="other_table">Каралин<br>Адилов</td>
+                    <td class="other_table">Едемский<br>Михеева</td>
+                </tr>
+                <tr class="other_table">
+                    <td class="other_table">3</td>
+                    <td class="other_table">Ципилев</td>
+                    <td class="other_table">Сибирцев<br>Кубышкина</td>
+                    <td class="other_table">Печинкина<br>Петров</td>
+                </tr>
+                <tr class="other_table">
+                    <td class="other_table">4</td>
+                    <td class="other_table">Барзаногова</td>
+                    <td class="other_table">Дейнега<br>Некрасов</td>
+                    <td class="other_table">Алексеев<br>Клюкин</td>
+                </tr>
+                <tr class="other_table">
+                    <td class="other_table">5</td>
+                    <td class="other_table">Байбородин<br>Бойко</td>
+                    <td class="other_table">Чебыкин</td>
+                    <td class="other_table"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

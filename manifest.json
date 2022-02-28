@@ -1,11 +1,12 @@
 {
-  "version": "2.1",
-  "short_name": "КСК-11",
-  "name": "Страница группы КСК-11",
-  "icons": [ { "src": "icon-pwa.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" } ],
-  "start_url": "home.html",
-  "background_color": "#202020",
-  "theme_color": "#202020",
-  "display": "standalone",
-  "orientation": "portrait"
+  "version"          : "3.0",
+  "short_name"       : "КСК-11",
+  "name"             : "Страница группы КСК-11",
+  "icons"            : [ { "src": "csc11-pwa-app-icon.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" } ],
+  "start_url"        : "index.html",
+  "id"               : "index.html",
+  "background_color" : "#22223b",
+  "theme_color"      : "#22223b",
+  "display"          : "standalone",
+  "orientation"      : "portrait"
 }

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta                                       charset="UTF-8">
+        <meta   http-equiv="Permissions-Policy"     content="interest-cohort=()">
+        <meta   name="viewport"                     content="width=device-width, initial-scale=1.0">
+        <meta   name="author"                       content="Plutonny">
+        <meta   name="keywords"                     content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta   name="description"                  content="Таблица, КСК-11">
+        <meta   name="theme-color" id="theme-color" content="#202020">
+
+        <title  id="csc11-title-of-page"            >Таблица, КСК-11</title>
+        
+        <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
+        <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
+        <script type="text/javascript"              src="/assets/solar.js"></script>
+        <script type="text/javascript"              src="/assets/luxon.js"></script>
+        <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
+        
+        <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
+        <link   rel="manifest"                      href="/college-beta/manifest.json">
+        <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
+        
+        <script> var thisPageBuild = 11; </script>
+        
+        <style  id="root-colors-theme"></style>
+        
+        <script type="text/javascript"              src="/assets/beta/preload.js"></script>
+        <script type="text/javascript"              src="/assets/beta/frames.js"></script>
+        <script type="text/javascript"              src="/assets/beta/main.js"></script>
+
+        <noscript>
+            <style>
+                html, body { background-color: #202020; }
+                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
+                div        { margin-top: 64px; }
+            </style>
+            <div>
+                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
+                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
+            </div>
+        </noscript>
+    </head>
+    <body>
+        <div class="modal" id="modal"></div>
+        <div class="header" id="header"></div>
+        <div class="navbar" id="navbar"></div>
+        <div id="loadText" style="height: 100vh; width: 100vw; position: absolute; display: flex; justify-content: center; align-content: center; align-items: center;"></div>
+        <div id="iframeTable"></div>
+        <div class="content" id="content"></div>
+        
+        <script>
+            var TABLELIST = {
+                K1attendance: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBg9EuNAdXmNJaVIhfmC1sfUEO_2H8BKjzaEnHkNoX6ageg1JFSpxeERSTjw0tJQ0p8k71gzrRUsOz/pubhtml?widget=true&amp;headers=true',
+                K1timetable: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQp0iMzMTIMBq2Dbtqhmdpioq0POj3XrKICVWdk-CJWUuXLVvIo3d4r6j2DzQ4G0vJYiJBp_RyZpt6X/pubhtml?widget=true&amp;headers=true',
+                
+                K1S1grades: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTO2ffgrLtW28ePmsQ2Ka29vneyyLNiF428k-mSWrmMBKHKKw5Zj8IOOtx4mC2Jabwp5ukoGlXL2_hA/pubhtml?widget=true&amp;headers=true',
+                K1S1final: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQkUQg4-KavCeFDF3aeZAyJh2S9bDX81YqtE47Cv3v_HHhn5AX6QbRgslIuseLC8SNpplJDWY1ljPo9/pubhtml?widget=true&amp;headers=true',
+
+                K1S2grades: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSc0wJbt-ppYMnjQch7ZvlUZSVjhT54n9i98Rve7E7NEtNhAS6qFulo81MSQ80jn-0YjPMUTsx6NMKP/pubhtml?widget=true&amp;headers=true',
+                K1S2final: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSyjIqzrp8NRTuO3dSTx9b-oh0PU829_D3sv9wSTSzfmt8fREvfMyC-MchGSVFcnSgu3PJziA8b3KaS/pubhtml?widget=true&amp;headers=true',
+            }
+            
+            if (REQUEST.pres != undefined) {
+                page.output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
+                if (REQUEST.pres == 'attendance') {
+                    frames.navbar('attendance')
+                    page.output('csc11-title-of-page', 'Посещаемость, КСК-11')
+                    table = TABLELIST.K1attendance
+                }
+                else if (REQUEST.pres == 'grades') {
+                    frames.navbar('grades')
+                    page.output('csc11-title-of-page', 'Оценки, КСК-11')
+                    table = TABLELIST.K1S2grades
+                }
+                else {
+                    frames.navbar('other')
+                    table = `/college${betaRepos}/error/?err=gtable`
+                }
+                page.output('iframeTable', `
+                <div style="height: calc(100% - 66px); width: 100%; position: absolute; z-index: 3;">
+                    <iframe style="border: none; width: 100%; height: 100%;" src="${table}"></iframe>
+                </div>
+                `)
+                theme.gtable()
+            }
+            else if (REQUEST.table != undefined) {
+                page.output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
+                frames.navbar('other')
+                page.output('iframeTable', `
+                <div style="height: calc(100% - 66px); width: 100%; position: absolute; z-index: 3;">
+                    <iframe style="border: none; width: 100%; height: 100%;" src="${REQUEST.table}"></iframe>
+                </div>
+                `)
+                theme.gtable()
+            }
+            else {
+                frames.header(`Список таблиц`, [false, true], false)
+                frames.navbar('other')
+                page.output('content', `
+                <style>
+                    .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
+                </style>
+
+                <h3 style="text-align: center; margin-top: 0px;s">2021/2022 уч. год</h3>
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1attendance}')">
+                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Посещаемость</p></div>
+                    </button>
+                    <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1attendance}">${SVG.link}</a>
+                </div>
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1timetable}')">
+                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Расписание</p></div>
+                    </button>
+                    <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1timetable}">${SVG.link}</a>
+                </div>
+
+                <h3 style="margin-left: 16px;">1 семестр</h3>
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S1grades}')">
+                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Оценки</p></div>
+                    </button>
+                    <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S1grades}">${SVG.link}</a>
+                </div>
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S1final}')">
+                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Итоговые оценки</p></div>
+                    </button>
+                    <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S1final}">${SVG.link}</a>
+                </div>
+
+                <h3 style="margin-left: 16px;">2 семестр</h3>
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S2grades}')">
+                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Оценки</p></div>
+                    </button>
+                    <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S2grades}">${SVG.link}</a>
+                </div>
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S2final}')">
+                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Итоговые оценки</p></div>
+                    </button>
+                    <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S2final}">${SVG.link}</a>
+                </div>
+                `)
+            }
+
+            deviceStorage.write('gtableBuildPage', thisPageBuild)
+        </script>
+    </body>
+</html>

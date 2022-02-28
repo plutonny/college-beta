@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title id="title_page">Дополнительно | КСК-11</title>
+        <title id="title_page">Дополнительно, КСК-11</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Plutonny">
         <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
-        <meta name="description" content="Расписание группы КСК-11">
+        <meta name="description" content="Дополнительная информация, КСК-11">
         <meta name="theme-color" id="theme-color" content="#f0f0f0">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
-        <script type="text/javascript"       src="../storage/solar.js"></script>
-        <script type="text/javascript"       src="../storage/luxon.js"></script>
-        
-        <script type="text/javascript"       src="../storage/debug.js"></script>
-        <script type="text/javascript"       src="../storage/frames-min.js"></script>
-        <link rel="icon"                    href="../storage/images/college.png">
-        <link rel="stylesheet" media="all"  href="../storage/main.css">
-        <link rel="manifest" href="manifest.json">
+        <script type="text/javascript"       src="/assets/solar.js"></script>
+        <script type="text/javascript"       src="/assets/luxon.js"></script>
+
+        <script type="text/javascript"       src="/assets/beta/PC/debug.js"></script>
+        <script type="text/javascript"       src="/assets/beta/PC/frames.js"></script>
+        <link rel="icon"                    href="/assets/beta/PC/images/college.png">
+        <link rel="stylesheet" media="all"  href="/assets/beta/PC/main.css">
         <style id="theme_css"></style>
         
         <style>
@@ -41,8 +40,7 @@
     <body>
         <div class="modal" id="modal"></div>
         <script>
-            if (!BETA) { headertext = 'дополнительно' }
-            header(2, `Группа КСК-11`, `${headertext}`, `home`, false, true, true)
+            header('дополнительно', false, true, true)
         </script>
         <div class="other_page">
             <div class="other_table">
@@ -100,6 +98,6 @@
                 </div>
             </div>
         </div>
-        <script>theme(1); settings('write', 'OtherBuildPage', 61); enableLogger()</script>
+        <script>theme(1)</script>
     </body>
 </html>
