@@ -22,7 +22,7 @@
         
         <script> var thisPageBuild = 80; </script>
         
-        <style  id="root-colors-theme"></style>
+        <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
@@ -46,7 +46,9 @@
         <div class="header" id="header"></div>
         <div class="navbar" id="navbar"><script>frames.navbar('home')</script></div>
         <div class="greeting" id="greeting"></div>
-        <div class="content" id="content"></div>
+        <div class="content" id="content">
+            <h2 style="text-align: center;">Если вы читаете этот текст, это означает что страница не смогла загрузиться. В этом случае советую написать разработчику, он поможет решить данную проблему.</h2>
+        </div>
         
         <script>
             if (REQUEST.timetable != undefined) {

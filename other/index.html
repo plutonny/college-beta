@@ -23,7 +23,7 @@
         
         <script> var thisPageBuild = 70; </script>
         
-        <style  id="root-colors-theme"></style>
+        <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
 
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
@@ -45,7 +45,9 @@
         <div class="modal" id="modal"></div>
         <div class="header" id="header"></div>
         <div class="navbar" id="navbar"><script>frames.navbar('other')</script></div>
-        <div class="content" id="content"></div>
+        <div class="content" id="content">
+            <h2 style="text-align: center;">Если вы читаете этот текст, это означает что страница не смогла загрузиться. В этом случае советую написать разработчику, он поможет решить данную проблему.</h2>
+        </div>
         
         <script>
             if (REQUEST.p == 'seating') {
@@ -141,9 +143,9 @@
 
                     <div style="height: 8px;"></div>
 
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/support/')">
+                    <!--<button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/support/')">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.support}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Поддержка</p></div>
-                    </button>
+                    </button>-->
                     <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/simple/')">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.simple}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Упрощенная страница</p></div>
                     </button>

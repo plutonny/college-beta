@@ -23,7 +23,7 @@
         
         <script> var thisPageBuild = 1; </script>
         
-        <style  id="root-colors-theme"></style>
+        <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
@@ -46,8 +46,8 @@
         <div class="header" id="header"><script>frames.header(`Поддержка`, [false, true], true)</script></div>
         <div class="navbar" id="navbar"><script>frames.navbar('other')</script></div>
         <div class="greeting" id="greeting"></div>
-        <div class="content" id="content"></div>
-
+        <div class="content" id="content">
+            <h2 style="text-align: center;">Если вы читаете этот текст, это означает что страница не смогла загрузиться. В этом случае советую написать разработчику, он поможет решить данную проблему.</h2>        </div>
         <script>
             page.output('greeting', `
                 <style>
@@ -60,6 +60,7 @@
                 <style>
                     .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
                 </style>
+                <h3>Данную страницу я все пытаюсь сделать аж с версии 1.2. К сожалению, руки до нее так и не дошли, и не скоро дойдут. Можете меня подбодрить и я наверное запилю поддержку в версии 3.1, хотя необходимость в поддержке нужна сейчас, когда такое огромное обновление, вопросов возникнуть должно много... Если что, пишите разрабу, он пояснит, если что не понятно.</h3>
             `)
         </script>
 
