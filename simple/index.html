@@ -44,6 +44,10 @@
     </head>
     <body>
         <script>
+            var rep = ''
+            try {
+                rep = betaRepos
+            } catch {}
             var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
             var weekNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
         </script>
@@ -119,7 +123,7 @@
                             result += `</table>`
                         }
                     } catch (e) {
-                        result += `<h3>Расписание не смогло загрузиться. Обратитесь к разработчику.</h3>`
+                        result = `<h3>Расписание не смогло загрузиться.</h3>`
                     }
 
                     document.getElementById('timetable').innerHTML = result
@@ -216,7 +220,7 @@
             </table>
 
             <div style="display: flex; justify-content: center;">
-                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`/college${betaRepos}/`)">Вернуться на главную</button>
+                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`/college${rep}/`)">Вернуться на главную</button>
             </div>
         </div>
         
