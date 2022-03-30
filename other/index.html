@@ -55,9 +55,10 @@
                 page.output('csc11-title-of-page', 'Рассадка, КСК-11')
                 page.output('content', `
                     <style>
+                        td { word-break: break-all; }
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 38px 8px 73px 8px; min-height: calc(100vh - 100px); }
                         td.seatingTableTD { border: 1px solid #707070; height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
-                        .seatingTableNUM { width: 15px; border: 1px solid #707070;  font-family: 'Montserrat'; }
+                        .seatingTableNUM { border: 1px solid #707070;  font-family: 'Montserrat'; }
                     </style>
 
                     <table style="border: 1px solid #707070; border-radius: 18px; text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">

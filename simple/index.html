@@ -74,7 +74,7 @@
                     try {
                         for (var i = 1; i <= 6; i++) {
                             result += `<h3>${weekNames[i]}:</h3>`
-                            result += `<table class="timetableWork${i}" style="width: 330px; text-align: center; border-collapse: collapse; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">`
+                            result += `<table class="timetableWork${i}" style="text-align: center; border-collapse: collapse; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">`
                             for (var j = 0; j < TIMETABLE[i].length; j++) {
                                 var inj = TIMETABLE[i][j][4] == 'default' ? `--root-navbar-bg-color` : `--week-${TIMETABLE[i][j][4]}`
                                 if (TIMETABLE[i][j][4] == 'default') {
@@ -177,8 +177,8 @@
 
             <h2>Рассадка:</h2>
             <style>
-                td.seatingTableTD { border: 2px solid #707070; height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
-                .seatingTableNUM { width: 15px; border: 2px solid #707070;  font-family: 'Montserrat'; }
+                td.seatingTableTD { word-break: break-all;  border: 2px solid #707070; height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
+                .seatingTableNUM { border: 2px solid #707070;  font-family: 'Montserrat'; }
             </style>
             <table style="text-align: center; border-collapse: collapse; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">
                 <tr class="seatingTableNUM">
