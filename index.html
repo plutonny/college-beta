@@ -201,7 +201,7 @@
                     ${TIMETABLE.pair.get.HTML.day(TIMETABLE.pair.get.listOfDay([pairWeekNum, CURRDATE.getDay() == 0 ? WEEK.name.alt.EN : WEEK.name.EN]))}
 
                     <div style="display: flex; justify-content: center; flex-direction: column; padding: 24px 0px;">
-                        <button style="margin: 0; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('https://docs.google.com/viewer?url=http://arcotel.ru/doc/stud/${NextDay.getDate()}.${NextDay.getMonth() + 1 < 10 ? `0${NextDay.getMonth() + 1}` : NextDay.getMonth() + 1}.xlsx')">Изменения на ${NextDay.getDate()}.${NextDay.getMonth() + 1 < 10 ? `0${NextDay.getMonth() + 1}` : NextDay.getMonth() + 1}</button>
+                        <button style="margin: 0; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('https://docs.google.com/viewer?url=http://arcotel.ru/doc/stud/${NextDay.getDate() < 10 ? `0${NextDay.getDate()}` : NextDay.getDate()}.${NextDay.getMonth() + 1 < 10 ? `0${NextDay.getMonth() + 1}` : NextDay.getMonth() + 1}.xlsx')">Изменения на ${NextDay.getDate() < 10 ? `0${NextDay.getDate()}` : NextDay.getDate()}.${NextDay.getMonth() + 1 < 10 ? `0${NextDay.getMonth() + 1}` : NextDay.getMonth() + 1}</button>
                         <div style="height: 12px;"></div>
                         <button style="margin: 0; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Все пары</button>
                     </div>
