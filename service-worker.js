@@ -26,7 +26,7 @@ self.addEventListener('install', function(event) {
             .then(assets => {
                 const urlsToCache = [
                     'index.html',
-                    'icon-pwa.png',
+                    'csc11-pwa-app-icon.png',
                 ]
                 cache.addAll(urlsToCache)
                 console.log('Service worker: chaced');
