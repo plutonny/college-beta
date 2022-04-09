@@ -20,7 +20,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         
-        <script> var thisPageBuild = 81; </script>
+        <script> var thisPageBuild = 82; </script>
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
@@ -170,7 +170,7 @@
                     var greetingFirst = '', greetingSecond = ''
                     if (CURRDATE.getDay() == 0) { greetingFirst = 'Сегодня пар нет' } 
                     else                        { greetingFirst = TIMETABLE.pair.get.current() }
-                    greetingSecond = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}, ${CURRDATE.getDay() == 0 ? `с пон-ка ${WEEK.name.alt.RU}` : WEEK.name.RU} неделя`
+                    greetingSecond = `${CURRDATE.getDate()} ${month[CURRDATE.getMonth()]}, ${CURRDATE.getDay() == 0 || (CURRDATE.getDay() == 6 && TIMETABLE.pair.get.current() == 'Пары закончились') ? `с пон-ка ${WEEK.name.alt.RU}` : WEEK.name.RU} неделя`
                     page.output('greeting', `
                         <style>
                             .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
@@ -192,6 +192,8 @@
                     }
                 } catch (e) { page.error(`Error: home page content (${e})`) }
 
+                var pairDayChanges = `${NextDay.getDate() < 10 ? `0${NextDay.getDate()}` : `${NextDay.getDate()}`}.${(NextDay.getMonth() + 1) < 10 ? `0${NextDay.getMonth() + 1}` : `${NextDay.getMonth() + 1}`}`
+
                 page.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
@@ -201,7 +203,7 @@
                     ${TIMETABLE.pair.get.HTML.day(TIMETABLE.pair.get.listOfDay([pairWeekNum, CURRDATE.getDay() == 0 ? WEEK.name.alt.EN : WEEK.name.EN]))}
 
                     <div style="display: flex; justify-content: center; flex-direction: column; padding: 24px 0px;">
-                        <button style="margin: 0; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('https://docs.google.com/viewer?url=http://arcotel.ru/doc/stud/${NextDay.getDate() < 10 ? `0${NextDay.getDate()}` : NextDay.getDate()}.${NextDay.getMonth() + 1 < 10 ? `0${NextDay.getMonth() + 1}` : NextDay.getMonth() + 1}.xlsx')">Изменения на ${NextDay.getDate() < 10 ? `0${NextDay.getDate()}` : NextDay.getDate()}.${NextDay.getMonth() + 1 < 10 ? `0${NextDay.getMonth() + 1}` : NextDay.getMonth() + 1}</button>
+                        <button style="margin: 0; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('https://docs.google.com/viewer?url=http://arcotel.ru/doc/stud/${pairDayChanges}.xlsx')">Изменения на ${pairDayChanges}</button>
                         <div style="height: 12px;"></div>
                         <button style="margin: 0; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign('/college${betaRepos}/?timetable=week')">Все пары</button>
                     </div>
