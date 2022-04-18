@@ -11,11 +11,12 @@
 
         <title  id="csc11-title-of-page"            >Простая страница, КСК-11</title>
         
-        <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
-        <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
+        <link   rel="preconnect"                    href="https://fonts.googleapis.com">
+        <link   rel="preconnect"                    href="https://fonts.gstatic.com" crossorigin>
+        <link   rel="stylesheet"                    href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+        <link   rel="stylesheet"                    href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap">         <script type="text/javascript"              src="https://bebrarium.plutonny.ru/solar.js"></script>
+        <script type="text/javascript"              src="https://bebrarium.plutonny.ru/luxon.js"></script>
         <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
-        <script type="text/javascript"              src="/assets/solar.js"></script>
-        <script type="text/javascript"              src="/assets/luxon.js"></script>
         
         <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
         <link   rel="manifest"                      href="/college-beta/manifest.json">
@@ -29,25 +30,9 @@
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
         <script type="text/javascript"              src="/assets/beta/timetable.js"></script>
-
-        <noscript>
-            <style>
-                html, body { background-color: #202020; }
-                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
-                div        { margin-top: 64px; }
-            </style>
-            <div>
-                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
-            </div>
-        </noscript>
     </head>
     <body>
         <script>
-            var rep = ''
-            try {
-                rep = betaRepos
-            } catch {}
             var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
             var weekNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
         </script>
@@ -220,7 +205,7 @@
             </table>
 
             <div style="display: flex; justify-content: center;">
-                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(`/college${rep}/`)">Вернуться на главную</button>
+                <button style="margin: 24px 0px; font-family: 'Montserrat' !important; cursor: pointer; border: none; border-radius: 16px; height: 42px; font-size: 20px; width: 100%;" onclick="location.assign(link({type: 'HTML', file: ''}))">Вернуться на главную</button>
             </div>
         </div>
         

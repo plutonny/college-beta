@@ -11,10 +11,11 @@
 
         <title  id="csc11-title-of-page"            >Таблица, КСК-11</title>
         
-        <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
-        <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
-        <script type="text/javascript"              src="/assets/solar.js"></script>
-        <script type="text/javascript"              src="/assets/luxon.js"></script>
+        <link   rel="preconnect"                    href="https://fonts.googleapis.com">
+        <link   rel="preconnect"                    href="https://fonts.gstatic.com" crossorigin>
+        <link   rel="stylesheet"                    href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+        <link   rel="stylesheet"                    href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap">         <script type="text/javascript"              src="https://bebrarium.plutonny.ru/solar.js"></script>
+        <script type="text/javascript"              src="https://bebrarium.plutonny.ru/luxon.js"></script>
         <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
         
         <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
@@ -28,18 +29,6 @@
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
-
-        <noscript>
-            <style>
-                html, body { background-color: #202020; }
-                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
-                div        { margin-top: 64px; }
-            </style>
-            <div>
-                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
-            </div>
-        </noscript>
     </head>
     <body>
         <div class="modal" id="modal"></div>
@@ -62,7 +51,7 @@
             }
             
             if (REQUEST.pres != undefined) {
-                page.output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
+                page.output('loadText', `<img src="${link({type: 'assets', file: 'load.gif', noBeta: true})}" alt="Загрузка..." style="height: 64px; width: 64px;">`)
                 if (REQUEST.pres == 'attendance') {
                     frames.navbar('attendance')
                     page.output('csc11-title-of-page', 'Посещаемость, КСК-11')
@@ -75,7 +64,7 @@
                 }
                 else {
                     frames.navbar('other')
-                    table = `/college${betaRepos}/error/?err=gtable`
+                    table = `${link({type: 'HTML', file: 'error/?err=gtable'})}`
                 }
                 page.output('iframeTable', `
                 <div style="height: calc(100% - 66px); width: 100%; position: absolute; z-index: 3;">
@@ -85,7 +74,7 @@
                 theme.gtable()
             }
             else if (REQUEST.table != undefined) {
-                page.output('loadText', '<img src="/assets/load.gif" alt="Загрузка..." style="height: 64px; width: 64px;">')
+                page.output('loadText', `<img src="${link({type: 'assets', file: 'load.gif', noBeta: true})}" alt="Загрузка..." style="height: 64px; width: 64px;">`)
                 frames.navbar('other')
                 page.output('iframeTable', `
                 <div style="height: calc(100% - 66px); width: 100%; position: absolute; z-index: 3;">
@@ -104,13 +93,13 @@
 
                 <h3 style="text-align: center; margin-top: 0px;s">2021/2022 уч. год</h3>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1attendance}')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1attendance}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Посещаемость</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1attendance}">${SVG.link}</a>
                 </div>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1timetable}')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1timetable}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Расписание</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1timetable}">${SVG.link}</a>
@@ -118,13 +107,13 @@
 
                 <h3 style="margin-left: 16px;">1 семестр</h3>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S1grades}')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S1grades}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S1grades}">${SVG.link}</a>
                 </div>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S1final}')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S1final}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Итоговые оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S1final}">${SVG.link}</a>
@@ -132,13 +121,13 @@
 
                 <h3 style="margin-left: 16px;">2 семестр</h3>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S2grades}')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S2grades}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S2grades}">${SVG.link}</a>
                 </div>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/?table=${TABLELIST.K1S2final}')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S2final}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Итоговые оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S2final}">${SVG.link}</a>

@@ -8,8 +8,8 @@
         <meta name="description" content="Настройки">
         <meta name="theme-color" id="theme-color" content="#f0f0f0">
         <meta http-equiv="Permissions-Policy" content="terest-cohort=()">
-        <script type="text/javascript"       src="/assets/solar.js"></script>
-        <script type="text/javascript"       src="/assets/luxon.js"></script>
+        <script type="text/javascript"       src="https://bebrarium.plutonny.ru/solar.js"></script>
+        <script type="text/javascript"       src="https://bebrarium.plutonny.ru/luxon.js"></script>
 
         <script type="text/javascript"       src="/assets/beta/PC/debug.js"></script>
         <script type="text/javascript"       src="/assets/beta/PC/frames.js"></script>
@@ -27,13 +27,6 @@
             p.usernamesave { font-size: 14px; margin-left: 4px; opacity: 0.5; user-select: none; }
             input[type="time"]::-webkit-calendar-picker-indicator { display: none; }
         </style>
-
-        <noscript>
-            <div style="font-size: 32px; text-align: center;">
-                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал сайта недоступен</p>
-            </div>
-        </noscript>
     </head>
     <body>
         <div class="modal" id="modal"></div>
@@ -68,7 +61,7 @@
                     <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start;">
                         <div style="display: flex; align-items: center;">
                             <input type="checkbox" id="oldveret" name="oldveret" ${settings('get', 'autoReturnToPCVersion') == 'true' ? 'checked' : ''} onchange="settingsoldveret()" style="margin: 0px 12px 0px 6px;" value="theme">
-                            <label for="oldveret">автоматически перенаправлять на старую версию (только для ПК)</label>
+                            <label for="oldveret">автоматически перенаправлять на старую версию</label>
                         </div>
                     </div>
                 </div>
@@ -98,13 +91,13 @@
             
             output(false, `<div class="version">
                             <p class="version" style="font-size: 22px">Версии:</p>
-                                <a href="../../author/overview.html" class="version">
+                                <p class="version">
                                     скрипт: ${VERSION} build ${settings('get', 'FramesJSBuild')}<br>
                                     debug: build ${settings('get', 'DebugJSBuild')}<br>
                                     главная: build ${settings('get', 'HomeBuildPage')}<br>
                                     расписание: build ${settings('get', 'TimetableBuildPage')}<br>
                                     дополнительно: build ${settings('get', 'OtherBuildPage')}
-                                </a>
+                                </p>
                             </div>`)
             theme(1)
         </script>

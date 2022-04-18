@@ -10,25 +10,13 @@
 
         <title  id="csc11-title-of-page"            >Ошибка :(</title>
 
+        <script type="text/javascript"              src="https://bebrarium.plutonny.ru/luxon.js"></script>
         <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
 
         <link   rel="icon"                          href="/assets/settings.png">
-        <script type="text/javascript"              src="/assets/luxon.js"></script>
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
-
-        <noscript>
-            <style>
-                html, body { background-color: #202020; }
-                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
-                div        { margin-top: 64px; }
-            </style>
-            <div>
-                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
-            </div>
-        </noscript>
     </head>
     <body>
         <div class="modal" id="modal"></div>
@@ -86,7 +74,7 @@
                         <h3 style="text-align: center;">Что случилось?<br>Сайт говорит нам неведомые "${sessionStorage.getItem('errorPageError')}"</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">
                             <button style="height: 36px; width: 196px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="history.back(); sessionStorage.removeItem('errorPageError')">Вернуться назад</button>
-                            <!--<button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/support/?q=error')">Поддержка</button>-->
+                            <!--<button style="height: 36px; width: 148px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign(${link({type: 'HTML', file: 'support/?q=error'})})">Поддержка</button>-->
                         </div>
                         <h3 style="text-align: center; margin-top: 48px;">Если хотите помочь <a href="https://vk.me/pltny" target="_blank">разработчику</a> разобраться в этой проблеме быстрее,<br>нажмите на кнопку ниже и отправьте <a href="https://vk.me/pltny" target="_blank">ему</a> скрин, что выдала эта шайтан машина</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
@@ -94,7 +82,7 @@
                         </div>
                         <h3 style="text-align: center; margin-top: 48px;">Так же вы можете воспользоваться упрощенной страницей, на которой возникшей ошибки быть не должно</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 26px; margin-bottom: 64px;">
-                            <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign('/college${betaRepos}/simple/')">Перейти</button>
+                            <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="location.assign(${link({type: 'HTML', file: 'simple/'})})">Перейти</button>
                         </div>
                     `)
                 }

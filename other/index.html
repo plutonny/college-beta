@@ -11,10 +11,11 @@
 
         <title  id="csc11-title-of-page"            >Другое, КСК-11</title>
 
-        <link   rel="preload prefetch" as="font"    href="/assets/fonts/n2.woff2" type="font/woff2" crossorigin="anonymous">
-        <link   rel="preload prefetch" as="font"    href="/assets/fonts/m2.woff2" type="font/woff2" crossorigin="anonymous">
-        <script type="text/javascript"              src="/assets/solar.js"></script>
-        <script type="text/javascript"              src="/assets/luxon.js"></script>
+        <link   rel="preconnect"                    href="https://fonts.googleapis.com">
+        <link   rel="preconnect"                    href="https://fonts.gstatic.com" crossorigin>
+        <link   rel="stylesheet"                    href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+        <link   rel="stylesheet"                    href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap">         <script type="text/javascript"              src="https://bebrarium.plutonny.ru/solar.js"></script>
+        <script type="text/javascript"              src="https://bebrarium.plutonny.ru/luxon.js"></script>
         <script type="text/javascript"              src="//cdn.jsdelivr.net/npm/eruda"></script>
         
         <link   rel="icon"                          href="/college-beta/csc11-favicon.png">
@@ -28,18 +29,6 @@
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
-        
-        <noscript>
-            <style>
-                html, body { background-color: #202020; }
-                p, a       { color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 28px; text-align: center; }
-                div        { margin-top: 64px; }
-            </style>
-            <div>
-                <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал данного сайта недоступен, можете перейти на <a href="/college/simpleoutjs.html">упрощенную страницу</a></p>
-            </div>
-        </noscript>
     </head>
     <body>
         <div class="modal" id="modal"></div>
@@ -122,38 +111,38 @@
                     </style>
 
                     <div style="margin: 24px 0px 8px 0px; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center;">
-                        <img style="height: 64px; width: 64px; border-radius: 16px;" src="/college${betaRepos}/csc11-pwa-app-icon.png" />
+                        <img style="height: 64px; width: 64px; border-radius: 16px;" src="${link({type: 'HTML', file: 'csc11-pwa-app-icon.png'})}" />
                         <h2 style="text-align: center;">Версия: ${siteVersion}</h2>
                     </div>
 
                     <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('https://discord.gg/vS5X5NdEKP')">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.discord}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Дискорд</p></div>
                     </button>
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/other/?p=groupemail')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'other/?p=groupemail'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.email}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Почта группы</p></div>
                     </button>
 
                     <div style="height: 8px;"></div>
 
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/gtable/')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.list}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Список таблиц</p></div>
                     </button>
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/other/?p=seating')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'other/?p=seating'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.people}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Рассадка</p></div>
                     </button>
 
                     <div style="height: 8px;"></div>
 
-                    <!--<button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/support/')">
+                    <!--<button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'support/'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.support}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Поддержка</p></div>
                     </button>-->
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/simple/')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'simple/'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.simple}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Упрощенная страница</p></div>
                     </button>
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/PC/')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'PC/'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.oldver}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Старая версия</p></div>
                     </button>
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign('/college${betaRepos}/settings/')">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'settings/'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.settings}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Настройки</p></div>
                     </button>
                 `)
