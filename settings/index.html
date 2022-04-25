@@ -25,6 +25,7 @@
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
+        <script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
@@ -67,7 +68,7 @@
             }
             */
 
-            page.output(`settings`, `
+            plutonny.output(`settings`, `
             <style>
                 .settings { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                 input[type="time"]::-webkit-calendar-picker-indicator { display: none; }
@@ -145,7 +146,7 @@
                 theme.load()
             }
 
-            username.oninput = async function() { deviceStorage.write('username', username.value); usernamesave.innerHTML = 'сохранено'; await page.sleep(2500); usernamesave.innerHTML = '' }
+            username.oninput = async function() { deviceStorage.write('username', username.value); usernamesave.innerHTML = 'сохранено'; await plutonny.sleep(2500); usernamesave.innerHTML = '' }
         </script>
 
         <script>

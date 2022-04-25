@@ -16,6 +16,7 @@
         <link   rel="icon"                          href="/assets/settings.png">
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
+        <script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
     </head>
     <body>
@@ -45,8 +46,8 @@
                 `)
                 }
 
-                if (REQUEST.err == 'gtable') {
-                    page.output('error', `
+                if (REQUEST.err == 'not_found_table') {
+                    plutonny.output('error', `
                         <style>
                             :root {
                                 --root-text-color      :#000000;
@@ -69,7 +70,7 @@
                         </div>
                     `)
                 } else {
-                    page.output('error', `
+                    plutonny.output('error', `
                         <h1 style="margin-bottom: 76px; margin-top: 76px; text-align: center;">Произошла критическая ошибка!</h1>
                         <h3 style="text-align: center;">Что случилось?<br>Сайт говорит нам неведомые "${sessionStorage.getItem('errorPageError')}"</h3>
                         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 48px;">

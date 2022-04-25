@@ -26,6 +26,7 @@
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
+        <script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
@@ -51,22 +52,22 @@
             }
             
             if (REQUEST.pres != undefined) {
-                page.output('loadText', `<img src="${link({type: 'assets', file: 'load.gif', noBeta: true})}" alt="Загрузка..." style="height: 64px; width: 64px;">`)
+                plutonny.output('loadText', `<img src="${link({type: 'assets', file: 'load.gif', noBeta: true})}" alt="Загрузка..." style="height: 64px; width: 64px;">`)
                 if (REQUEST.pres == 'attendance') {
                     frames.navbar('attendance')
-                    page.output('csc11-title-of-page', 'Посещаемость, КСК-11')
+                    plutonny.output('csc11-title-of-page', 'Посещаемость, КСК-11')
                     table = TABLELIST.K1attendance
                 }
                 else if (REQUEST.pres == 'grades') {
                     frames.navbar('grades')
-                    page.output('csc11-title-of-page', 'Оценки, КСК-11')
+                    plutonny.output('csc11-title-of-page', 'Оценки, КСК-11')
                     table = TABLELIST.K1S2grades
                 }
                 else {
                     frames.navbar('other')
-                    table = `${link({type: 'HTML', file: 'error/?err=gtable'})}`
+                    table = `${link({type: 'HTML', file: 'error/?err=not_found_table'})}`
                 }
-                page.output('iframeTable', `
+                plutonny.output('iframeTable', `
                 <div style="height: calc(100% - 66px); width: 100%; position: absolute; z-index: 3;">
                     <iframe style="border: none; width: 100%; height: 100%;" src="${table}"></iframe>
                 </div>
@@ -74,9 +75,9 @@
                 theme.gtable()
             }
             else if (REQUEST.table != undefined) {
-                page.output('loadText', `<img src="${link({type: 'assets', file: 'load.gif', noBeta: true})}" alt="Загрузка..." style="height: 64px; width: 64px;">`)
+                plutonny.output('loadText', `<img src="${link({type: 'assets', file: 'load.gif', noBeta: true})}" alt="Загрузка..." style="height: 64px; width: 64px;">`)
                 frames.navbar('other')
-                page.output('iframeTable', `
+                plutonny.output('iframeTable', `
                 <div style="height: calc(100% - 66px); width: 100%; position: absolute; z-index: 3;">
                     <iframe style="border: none; width: 100%; height: 100%;" src="${REQUEST.table}"></iframe>
                 </div>
@@ -86,20 +87,20 @@
             else {
                 frames.header(`Список таблиц`, [false, true], false)
                 frames.navbar('other')
-                page.output('content', `
+                plutonny.output('content', `
                 <style>
                     .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                 </style>
 
                 <h3 style="text-align: center; margin-top: 0px;s">2021/2022 уч. год</h3>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1attendance}'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/?table=${TABLELIST.K1attendance}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Посещаемость</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1attendance}">${SVG.link}</a>
                 </div>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1timetable}'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/?table=${TABLELIST.K1timetable}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Расписание 2 семестр</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1timetable}">${SVG.link}</a>
@@ -107,13 +108,13 @@
 
                 <h3 style="margin-left: 16px;">1 семестр</h3>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S1grades}'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/?table=${TABLELIST.K1S1grades}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S1grades}">${SVG.link}</a>
                 </div>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S1final}'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/?table=${TABLELIST.K1S1final}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Итоговые оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S1final}">${SVG.link}</a>
@@ -121,13 +122,13 @@
 
                 <h3 style="margin-left: 16px;">2 семестр</h3>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S2grades}'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/?table=${TABLELIST.K1S2grades}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S2grades}">${SVG.link}</a>
                 </div>
                 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/?table=${TABLELIST.K1S2final}'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/?table=${TABLELIST.K1S2final}'}))">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between;"><p style="margin: 0px 8px; font-size: 16px;">Итоговые оценки</p></div>
                     </button>
                     <a style="margin: 0px 4px; font-size: 12px; text-decoration: none; fill: currentColor; color: var(--root-icon-color); text-align: center; width: 48px;" target="_blank" href="${TABLELIST.K1S2final}">${SVG.link}</a>

@@ -26,6 +26,7 @@
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
 
+        <script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
@@ -41,8 +42,8 @@
         <script>
             if (REQUEST.p == 'seating') {
                 frames.header(`Рассадка`, [false, true], false)
-                page.output('csc11-title-of-page', 'Рассадка, КСК-11')
-                page.output('content', `
+                plutonny.output('csc11-title-of-page', 'Рассадка, КСК-11')
+                plutonny.output('content', `
                     <style>
                         td { word-break: break-all; }
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 38px 8px 73px 8px; min-height: calc(100vh - 100px); }
@@ -92,8 +93,8 @@
             }
             else if (REQUEST.p == 'groupemail') {
                 frames.header(`Почта группы`, [false, true], false)
-                page.output('csc11-title-of-page', 'Почта группы, КСК-11')
-                page.output('content', `
+                plutonny.output('csc11-title-of-page', 'Почта группы, КСК-11')
+                plutonny.output('content', `
                 <style>
                     .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                 </style>
@@ -105,7 +106,7 @@
                 `)
             } else {
                 frames.header(`Другое`, [true, false], false)
-                page.output('content', `
+                plutonny.output('content', `
                     <style>
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; min-height: calc(100vh - 100px); }
                     </style>
@@ -124,7 +125,7 @@
 
                     <div style="height: 8px;"></div>
 
-                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'gtable/'}))">
+                    <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'table/'}))">
                         <div style="margin-left: 2px; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; color: var(--root-icon-color);">${SVG.list}<p style="margin: 0px 8px; font-size: 16px; color: var(--root-text-color);">Список таблиц</p></div>
                     </button>
                     <button style="margin: 4px 0px; height: 42px; width: 100%; border: none; fill: currentColor; border-radius: 16px; cursor: pointer;" onclick="window.location.assign(link({type: 'HTML', file: 'other/?p=seating'}))">

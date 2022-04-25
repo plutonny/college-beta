@@ -26,6 +26,7 @@
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
+        <script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
@@ -38,14 +39,14 @@
         <div class="content" id="content">
             <h2 style="text-align: center;">Если вы читаете этот текст, это означает что страница не смогла загрузиться. В этом случае советую написать разработчику, он поможет решить данную проблему.</h2>        </div>
         <script>
-            page.output('greeting', `
+            plutonny.output('greeting', `
                 <style>
                     .greeting { height: calc(15vh + 64px); padding-left: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
                 </style>
                 <p style="font-size:28px; margin:0px; text-decoration: none;">Чем могу помочь?</p>
                 <p style="font-size:16px; margin:0px;">Помощь в популярных проблемах</p>
             `)
-            page.output('content', `
+            plutonny.output('content', `
                 <style>
                     .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px 24px 73px 24px; margin-top: 8px; min-height: calc(100vh - 100px); }
                 </style>
