@@ -27,11 +27,11 @@
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
-        <script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
+        <!--<script type="text/javascript"              src="/assets/beta/plutonny.js"></script>
         <script type="text/javascript"              src="/assets/beta/preload.js"></script>
         <script type="text/javascript"              src="/assets/beta/frames.js"></script>
         <script type="text/javascript"              src="/assets/beta/main.js"></script>
-        <script type="text/javascript"              src="/assets/beta/timetable.js"></script>
+        <script type="text/javascript"              src="/assets/beta/timetable.js"></script>-->
     </head>
     <body>
         <div class="modal" id="modal"></div>
@@ -39,7 +39,15 @@
         <div class="navbar" id="navbar"><script>frames.navbar('home')</script></div>
         <div class="greeting" id="greeting"></div>
         <div class="content" id="content">
-            <h2 style="text-align: center;">Если вы читаете этот текст, это означает что страница не смогла загрузиться. В этом случае советую написать разработчику, он поможет решить данную проблему.</h2>
+            <style>
+                .content { margin: 24px; }
+            </style>
+            <h1 style="text-align: center; padding: 42px;">Ошибка!</h1>
+            <p style="text-align: center;">Что случилось? Эта ошибка видит свет, если страница совсем никак не смогла загрузиться.</p>
+            <p style="padding-top: 36px;">Что делать? Если Вы с ПК, откройте консоль разработчика (F12) и отправьте скрин ошибок разработчику. Если Вы с мобильного устройства, то просто напишите разработчику.</p>
+            <div style="border-radius: 16px; padding: 8px; margin-top: 24px; background-color: #ff000050;">
+                <p style="margin: 2px 4px; font-size: 15px;">Одна из вероятных проблем: не переустановленное приложение. Если Вы его переустановили и вновь увидели эту ошибку, то переустановите еще раз, но перед этим еще очистите кэш браузера.</p>
+            </div>
         </div>
         
         <script>
