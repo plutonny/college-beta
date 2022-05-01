@@ -21,7 +21,7 @@
         <link   rel="manifest"                      href="/college-beta/manifest.json">
         <link   rel="preload prefetch stylesheet"   href="/assets/beta/main.css" as="style">
 
-        <script> var thisPageBuild = 19; </script>
+        <script> var thisPageBuild = 20; </script>
         
         <style  id="root-colors-theme">#thMoon, #thSun { display: none; }</style>
         
@@ -126,12 +126,18 @@
                         <label for="worknavbar2">плавающий</label>
                     </div>
                 </div>
+                <p style="margin-bottom: 8px;">Другое:</p>
+                <div style="display: flex; align-items: center;">
+                    <input type="checkbox" id="PATRIOTMODE" name="PATRIOTMODE" ${deviceStorage.get('PATRIOTMODE') == 'true' ? 'checked' : ''} onchange="settingsEnablePATRIOTMODE()" style="margin: 0px 12px 0px 6px;" value="theme">
+                    <label for="PATRIOTMODE">включить замену букв "3" и "B"</label>
+                </div>
             </div>
             `)
 
             var themeCheckboxBox = document.getElementById('entheme');
             function settingsEnableThemeButton() { deviceStorage.write('themeEnableThemeButton', deviceStorage.get('themeEnableThemeButton') == 'true' ? false : true); frames.header('Настройки', [deviceStorage.get('themeEnableThemeButton') == 'true', true], false)}
-            
+            function settingsEnablePATRIOTMODE() { deviceStorage.write('PATRIOTMODE', deviceStorage.get('PATRIOTMODE') == 'true' ? false : true) }
+
             /* 1 - theme button (or none); 2 - sunrise/sunset; 3 - custom time */
             function settingsChangeType(type) { 
                 deviceStorage.write('themeType', type)
