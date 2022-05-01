@@ -1,5 +1,5 @@
 {
-  "version"          : "3.0",
+  "version"          : "3.0.2",
   "short_name"       : "КСК-11",
   "name"             : "Страница группы КСК-11",
   "icons"            : [ { "src": "csc11-pwa-app-icon.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" } ],

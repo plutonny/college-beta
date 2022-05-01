@@ -36,7 +36,49 @@
         <div class="header" id="header"></div>
         <div class="navbar" id="navbar"><script>frames.navbar('other')</script></div>
         <div class="content" id="content">
-            <h2 style="text-align: center;">Если вы читаете этот текст, это означает что страница не смогла загрузиться. В этом случае советую написать разработчику, он поможет решить данную проблему.</h2>
+            <style>
+                .content { margin: 24px; padding-bottom: 80px; }
+                p, a, b, h1, h2, h3, h4, h5, h6, button { font-family: 'Montserrat'; }
+            </style>
+            <h1 style="text-align: center; padding: 42px;">Ошибка!</h1>
+            <p style="text-align: center;">Что случилось? Эта ошибка означает, что страница никак не смогла загрузиться.</p>
+            <p style="padding-top: 36px;">Что делать? Можете написать разработчику.</p>
+            <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; border-radius: 16px; padding: 8px; margin-top: 24px; background-color: #ff000050; fill: currentColor;">
+                <p style="margin: 2px 4px; font-size: 15px;">Одна из вероятных проблем: не переустановленное приложение. Если Вы его переустановили и вновь увидели эту ошибку, то переустановите еще раз, но перед этим еще очистите кэш браузера.</p>
+                <div style="width: 48px; padding: 0px 4px;"><svg style="color: #bd0000a8;" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.2 34.4Q24.95 34.4 25.475 33.875Q26 33.35 26 32.55V23.75Q26 23.05 25.45 22.525Q24.9 22 24.2 22Q23.4 22 22.875 22.525Q22.35 23.05 22.35 23.8V32.6Q22.35 33.35 22.9 33.875Q23.45 34.4 24.2 34.4ZM24 17.9Q24.8 17.9 25.35 17.375Q25.9 16.85 25.9 16.05Q25.9 15.2 25.35 14.65Q24.8 14.1 24 14.1Q23.15 14.1 22.625 14.65Q22.1 15.2 22.1 16.05Q22.1 16.85 22.65 17.375Q23.2 17.9 24 17.9ZM24 44.8Q19.6 44.8 15.8 43.2Q12 41.6 9.2 38.8Q6.4 36 4.8 32.2Q3.2 28.4 3.2 24Q3.2 19.6 4.8 15.8Q6.4 12 9.2 9.2Q12 6.4 15.8 4.8Q19.6 3.2 24 3.2Q28.4 3.2 32.2 4.8Q36 6.4 38.8 9.2Q41.6 12 43.2 15.8Q44.8 19.6 44.8 24Q44.8 28.4 43.2 32.2Q41.6 36 38.8 38.8Q36 41.6 32.2 43.2Q28.4 44.8 24 44.8Z"/></svg></div>
+            </div>
+            <p>Для опытных пользователей: можно полностью сбросить настройки, это поможет, если проблема со стороны браузера (а проблема скорее всего именно со стороны браузера)</p>
+            <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 12px; margin-bottom: 64px;">
+                <script>
+                    function DELETEALL() {
+                        try {
+                            localStorage.clear()
+                            sessionStorage.clear()
+                            caches.delete('csc11-byPlutonny')
+                            caches.delete('plutonny-college')
+                            document.getElementById('content').innerHTML = `
+                            <style>
+                                .content { margin: 24px; padding-bottom: 80px; }
+                                p, a, b, h1, h2, h3, h4, h5, h6, button { font-family: 'Montserrat'; }
+                            </style>
+                            <h1 style="text-align: center; padding: 42px;">Успешно!</h1>
+                            <p style="text-align: center;">Теперь можно перезагрузить страницу.</p>
+                            `
+                        } catch (e) {
+                            document.getElementById('content').innerHTML = `
+                            <style>
+                                .content { margin: 24px; padding-bottom: 80px; }
+                                p, a, b, h1, h2, h3, h4, h5, h6, button { font-family: 'Montserrat'; }
+                            </style>
+                            <h1 style="text-align: center; padding: 42px;">Не успешно!</h1>
+                            <p style="text-align: center;">Прозошла ошибка при сбросе: ${e}</p>
+                            `
+                        }
+                        
+                    }
+                </script>
+                <button style="height: 48px; width: 256px; margin: 8px; border: none; border-radius: 100px; cursor: pointer;" onclick="DELETEALL()">Сбросить настройки</button>
+            </div>
         </div>
         
         <script>

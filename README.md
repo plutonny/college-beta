@@ -4,12 +4,14 @@
 
 ## Использование
 
-Ссылка на главную: <http://plutonny.github.io/college-beta/>
+~~Ссылка на главную: <https://plutonny.github.io/college-beta/>~~
+Ссылка на главную: <https://beta.college.plutonny.ru/>
 
 Остальные страницы являются дополнительными, все переходы идут от главной (и т.д.)
 
 ## Особенности
 
-Использует скрипты и стили из репозитория <https://github.com/plutonny/assets/>
+~~Использует скрипты и стили из репозитория <https://github.com/plutonny/assets/>~~
+Берет файлы с сервера <https://bebrarium.plutonny.ru/>
 
 Если вы не мой одногруппник, вам этот сайт незачем)
