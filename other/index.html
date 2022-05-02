@@ -91,44 +91,48 @@
                         .content { background-color: var(--secondary-bg-color); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 38px 8px 73px 8px; min-height: calc(100vh - 100px); }
                         td.seatingTableTD { border: 1px solid #707070; height: 43px; padding: 0px 2px; font-family: 'Montserrat'; }
                         .seatingTableNUM { border: 1px solid #707070;  font-family: 'Montserrat'; }
+                        .bt { border-top: 2px solid #707070 !important }
+                        .bb { border-bottom: 2px solid #707070 !important }
+                        .bl { border-left: 2px solid #707070 !important }
+                        .br { border-right: 2px solid #707070 !important }
                     </style>
 
-                    <table style="border: 1px solid #707070; border-radius: 18px; text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">
+                    <table style="border-radius: 18px; text-align: center; border-collapse: separate; border-spacing: 0px; margin: auto; background-color: var(--root-navbar-bg-color);">
                         <tr class="seatingTableNUM btl btr">
-                            <td class="seatingTableNUM btl"></td>
-                            <td class="seatingTableNUM">1</td>
-                            <td class="seatingTableNUM">2</td>
-                            <td class="seatingTableNUM btr">3</td>
+                            <td class="seatingTableNUM bt bl btl"></td>
+                            <td class="seatingTableNUM bt">1</td>
+                            <td class="seatingTableNUM bt">2</td>
+                            <td class="seatingTableNUM bt br btr">3</td>
                         </tr>
                         <tr>
-                            <td class="seatingTableTD">1</td>
+                            <td class="seatingTableTD bl">1</td>
                             <td class="seatingTableTD">Никитин<br>Павозков</td>
                             <td class="seatingTableTD">Ивин</td>
-                            <td class="seatingTableTD">Кузнецов<br>Савинов</td>
+                            <td class="seatingTableTD br">Кузнецов<br>Савинов</td>
                         </tr>
                         <tr>
-                            <td class="seatingTableTD">2</td>
+                            <td class="seatingTableTD bl">2</td>
                             <td class="seatingTableTD">Никонов<br>Поликевич</td>
                             <td class="seatingTableTD">Каралин<br>Адилов</td>
-                            <td class="seatingTableTD">Едемский<br>Михеева</td>
+                            <td class="seatingTableTD br">Едемский<br>Михеева</td>
                         </tr>
                         <tr>
-                            <td class="seatingTableTD">3</td>
+                            <td class="seatingTableTD bl">3</td>
                             <td class="seatingTableTD">Ципилев</td>
                             <td class="seatingTableTD">Сибирцев<br>Кубышкина</td>
-                            <td class="seatingTableTD">Печинкина<br>Петров</td>
+                            <td class="seatingTableTD br">Печинкина<br>Петров</td>
                         </tr>
                         <tr>
-                            <td class="seatingTableTD">4</td>
+                            <td class="seatingTableTD bl">4</td>
                             <td class="seatingTableTD">Барзаногова</td>
                             <td class="seatingTableTD">Дейнега<br>Некрасов</td>
-                            <td class="seatingTableTD">Алексеев<br>Клюкин</td>
+                            <td class="seatingTableTD br">Алексеев<br>Клюкин</td>
                         </tr>
                         <tr class="bbl bbr">
-                            <td class="seatingTableTD bbl">5</td>
-                            <td class="seatingTableTD">Байбородин<br>Бойко</td>
-                            <td class="seatingTableTD">Чебыкин</td>
-                            <td class="seatingTableTD bbr"></td>
+                            <td class="seatingTableTD bb bl bbl">5</td>
+                            <td class="seatingTableTD bb">Байбородин<br>Бойко</td>
+                            <td class="seatingTableTD bb">Чебыкин</td>
+                            <td class="seatingTableTD bb br bbr"></td>
                         </tr>
                     </table>
                 `)
